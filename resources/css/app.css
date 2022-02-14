@@ -1,0 +1,33 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+}
+
+h2 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+}
+
+a {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    letter-spacing: 4px;
+}
+
+button {
+    font-family: "Poppins", sans-serif;
+}
+
+p {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+}
+
+small {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+}
