@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\PostController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -40,13 +41,6 @@ Route::get('cards/popular', [CardController::class, 'getPopular']);
  * Post with comments view
  */
 // TODO : CREATE CONTROLLER, OBJECT BINDING MODEL,  RETURN POST DATA WITH MESSAGES. 
-Route::get('posts/{id}', function($id){
-    
-    return Inertia::render('Post', [
-        'post' => [
-            'id' => $id,
-        ]
-    ]);
-});
+Route::get('posts/{post}', [PostController::class, 'show']);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

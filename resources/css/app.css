@@ -2,7 +2,9 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-h1 {
+h1,
+h4,
+h5 {
     font-family: "Poppins", sans-serif;
     font-weight: 800;
 }
@@ -10,6 +12,11 @@ h1 {
 h2 {
     font-family: "Open Sans", sans-serif;
     font-weight: 400;
+}
+
+h3 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
 }
 
 a {
