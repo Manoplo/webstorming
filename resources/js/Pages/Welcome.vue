@@ -2,6 +2,7 @@
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import Vue3Lottie from "vue3-lottie";
 import MainAnimation from "../lotties/mainAnim.json";
+import MostRecent from "../components/containers/MostRecent";
 
 defineProps({
     canLogin: Boolean,
@@ -11,8 +12,8 @@ defineProps({
 
 <template>
     <Head title="Web Storming - Home" />
-
-    <header class="flex w-3/4 m-auto mt-56">
+    <!--HEADER STARTS HERE-->
+    <header class="flex w-3/4 m-auto mt-48">
         <div class="sm:w-1/2 w-full">
             <h1 class="sm:text-9xl text-5xl lighter-h1 text-gray-800">Web</h1>
             <h1
@@ -28,7 +29,7 @@ defineProps({
                 <div v-if="$page.props.auth.user">
                     <Link
                         :href="route('dashboard')"
-                        class="transition ease-in-out delay-150 text-sm text-white p-3 bg-yellow-500 rounded shadow-sm hover:shadow-lg hover:bg-yellow-400"
+                        class="transition ease-in-out text-base text-white p-4 bg-yellow-600 rounded shadow-sm hover:shadow-lg hover:bg-yellow-400 hover:text-black"
                     >
                         Go to my Profile
                     </Link>
@@ -36,7 +37,7 @@ defineProps({
                 <div v-else>
                     <Link
                         :href="route('login')"
-                        class="transition ease-in-out delay-150 text-sm text-white p-3 bg-yellow-500 rounded shadow-sm hover:shadow-lg hover:bg-yellow-400"
+                        class="transition ease-in-out text-base text-white p-4 bg-yellow-600 rounded shadow-sm hover:shadow-lg hover:bg-yellow-400 hover:text-black"
                     >
                         Log in
                     </Link>
@@ -44,7 +45,7 @@ defineProps({
                     <Link
                         v-if="canRegister"
                         :href="route('register')"
-                        class="transition ease-in-out delay-150 ml-4 text-sm text-white p-3 bg-yellow-500 rounded shadow-sm hover:shadow-lg hover:bg-yellow-400"
+                        class="transition ease-in-out ml-4 text-base text-white p-4 bg-yellow-600 rounded shadow-sm hover:shadow-lg hover:bg-yellow-400 hover:text-black"
                     >
                         Register
                     </Link>
@@ -55,6 +56,19 @@ defineProps({
             <Vue3Lottie :animationData="MainAnimation" />
         </div>
     </header>
+    <main>
+        <section>
+            <div class="block w-3/4 mx-auto mb-14 mt-14">
+                <h1 class="font-light text-gray-700 text-3xl">
+                    Most recent
+                    <span class="font-bold text-yellow-600 text-3xl"
+                        >webstormings</span
+                    >
+                </h1>
+            </div>
+            <MostRecent />
+        </section>
+    </main>
 </template>
 
 <style scoped>

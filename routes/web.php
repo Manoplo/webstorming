@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CardController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,5 +28,25 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+/**
+ * Cards fetching routes
+ */
+
+Route::get('cards/recent', [CardController::class, 'getRecent']);
+Route::get('cards/popular', [CardController::class, 'getPopular']);
+
+/**
+ * Post with comments view
+ */
+// TODO : CREATE CONTROLLER, OBJECT BINDING MODEL,  RETURN POST DATA WITH MESSAGES. 
+Route::get('posts/{id}', function($id){
+    
+    return Inertia::render('Post', [
+        'post' => [
+            'id' => $id,
+        ]
+    ]);
+});
 
 require __DIR__.'/auth.php';

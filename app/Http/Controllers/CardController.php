@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class CardController extends Controller
+{
+
+    /**
+     * Get most recent posts with some user and stack info to fullfill the cards. Axios call.
+     *
+     * @return json
+     */
+    public function getRecent(){
+
+        /**
+         * Query Builder axios response. 
+         */
+        $cardData = DB::table('posts')
+                    ->join('users', 'users.id', '=', 'posts.user_id')
+                    ->join('stacks', 'stacks.id', '=', 'posts.stack_id')
+                    ->select('posts.id', 'posts.title', 'posts.description', 'posts.created_at', 'users.name as user_name', 'users.image as user_image', 'stacks.name as stack_name', 'stacks.image as stack_image')
+                    ->orderBy('posts.created_at', 'desc')
+                    ->limit(6)
+                    ->get();
+
+        return response()->json($cardData);
+
+    }
+}
