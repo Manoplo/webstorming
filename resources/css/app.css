@@ -10,7 +10,7 @@ h5 {
 }
 
 h2 {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
 }
 
@@ -29,11 +29,16 @@ button {
 }
 
 p {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 300;
 }
 
 small {
     font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+}
+
+label {
+    font-family: "Poppins", sans-serif;
     font-weight: 300;
 }
