@@ -38,9 +38,10 @@ Route::get('cards/recent', [CardController::class, 'getRecent']);
 Route::get('cards/popular', [CardController::class, 'getPopular']);
 
 /**
- * Post with comments view
+ * POST CONTROLLER ROUTES
  */
 // TODO : CREATE CONTROLLER, OBJECT BINDING MODEL,  RETURN POST DATA WITH MESSAGES. 
 Route::get('posts/{post}', [PostController::class, 'show']);
+Route::post('posts/like', [PostController::class, 'like']);
 
 require __DIR__ . '/auth.php';
