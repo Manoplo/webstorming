@@ -193,9 +193,52 @@
                                             {{ comment.author.name }}
                                         </h3>
                                     </Link>
+
                                     <small class="text-gray-500 ml-2">
                                         {{ comment.created_at }}
                                     </small>
+                                    <div
+                                        v-if="
+                                            comment.author.id ===
+                                            $page.props.auth.user.id
+                                        "
+                                    >
+                                        <svg
+                                            width="18"
+                                            height="18"
+                                            stroke-width="1.5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="text-align-right ml-5 cursor-pointer hover:text-yellow-500"
+                                            @click="deleteComment(comment.id)"
+                                        >
+                                            <path
+                                                d="M19 11V20.4C19 20.7314 18.7314 21 18.4 21H5.6C5.26863 21 5 20.7314 5 20.4V11"
+                                                stroke="currentColor"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                            <path
+                                                d="M10 17V11"
+                                                stroke="currentColor"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                            <path
+                                                d="M14 17V11"
+                                                stroke="currentColor"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                            <path
+                                                d="M21 7L16 7M3 7L8 7M8 7V3.6C8 3.26863 8.26863 3 8.6 3L15.4 3C15.7314 3 16 3.26863 16 3.6V7M8 7L16 7"
+                                                stroke="currentColor"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                    </div>
                                 </div>
                                 <small class="text-gray-700">{{
                                     comment.body
@@ -224,7 +267,8 @@
                             ></div>
                             <button
                                 type="submit"
-                                class="transition ease-in-out bg-yellow-600 rounded text-white text-capitalize p-3 hover:bg-yellow-400 hover:text-black"
+                                class="transition ease-in-out cursor-pointer bg-yellow-400 rounded text-black text-capitalize p-3 hover:bg-yellow-500 hover:text-white"
+                                :disabled="isLength"
                             >
                                 Share
                             </button>
@@ -281,6 +325,10 @@ const commentForm = useForm({
     body: "",
 });
 
+const isLength = computed(() => {
+    return commentForm.body.length === 0;
+});
+
 // FUNCTIONS
 
 const like = () => {
@@ -326,8 +374,8 @@ const sendComment = () => {
     commentForm.post("/comments/store");
 
     Swal.fire({
-        title: "Thank you!",
-        text: "Your comment has been submitted.",
+        title: "Thanks for sharing your opinion!",
+        text: "We hope it was a good one 🥰",
         icon: "success",
         toast: true,
         showConfirmButton: false,
@@ -335,6 +383,45 @@ const sendComment = () => {
         timerProgressBar: true,
     });
     commentForm.reset();
+};
+
+const deleteComment = (id) => {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showDenyButton: true,
+        confirmButtonText: "Yes, delete it!",
+        confirmButtonColor: "#F0C400",
+
+        toast: true,
+    })
+        .then((result) => {
+            if (result.isConfirmed) {
+                Inertia.delete(`/comments/${id}`);
+                Swal.fire({
+                    title: "Comment deleted successfully",
+                    icon: "success",
+                    toast: true,
+                    timer: 1500,
+                    showConfirmButton: false,
+                    timerProgressBar: true,
+                });
+            }
+        })
+        .catch(() => {
+            Swal.fire({
+                title: "Cancelled",
+                text: "Your comment is safe :)",
+                toast: true,
+                timer: 1500,
+                timerProgressBar: true,
+            });
+        });
+};
+
+const checkBodyLength = () => {
+    return commentForm.body !== "";
 };
 </script>
 

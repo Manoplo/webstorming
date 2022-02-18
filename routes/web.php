@@ -51,6 +51,7 @@ Route::post('posts/like', [PostController::class, 'like']);
  */
 
 Route::post('comments/store', [CommentController::class, 'store']);
+Route::delete('comments/{comment}', [CommentController::class, 'destroy']);
 
 
 require __DIR__ . '/auth.php';

@@ -29,7 +29,7 @@ defineProps({
                 <div v-if="$page.props.auth.user">
                     <Link
                         :href="route('dashboard')"
-                        class="transition ease-in-out text-base text-white p-4 bg-yellow-600 rounded shadow-sm hover:shadow-lg hover:bg-yellow-400 hover:text-black"
+                        class="transition ease-in-out text-base text-white p-4 bg-yellow-400 rounded shadow-sm hover:shadow-lg hover:bg-yellow-400 hover:text-black"
                     >
                         Go to my Profile
                     </Link>
@@ -37,7 +37,7 @@ defineProps({
                 <div v-else>
                     <Link
                         :href="route('login')"
-                        class="transition ease-in-out text-base text-white p-4 bg-yellow-600 rounded shadow-sm hover:shadow-lg hover:bg-yellow-400 hover:text-black"
+                        class="transition ease-in-out text-base text-black p-4 bg-yellow-400 rounded shadow-sm hover:shadow-lg hover:bg-yellow-500 hover:text-white"
                     >
                         Log in
                     </Link>
@@ -45,7 +45,7 @@ defineProps({
                     <Link
                         v-if="canRegister"
                         :href="route('register')"
-                        class="transition ease-in-out ml-4 text-base text-white p-4 bg-yellow-600 rounded shadow-sm hover:shadow-lg hover:bg-yellow-400 hover:text-black"
+                        class="transition ease-in-out ml-4 text-base text-black p-4 bg-yellow-400 rounded shadow-sm hover:shadow-lg hover:bg-yellow-500 hover:text-white"
                     >
                         Register
                     </Link>
