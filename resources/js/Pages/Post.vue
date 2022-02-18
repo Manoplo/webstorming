@@ -62,7 +62,7 @@
                                 height="36"
                                 stroke-width="1.5"
                                 viewBox="0 0 24 24"
-                                :fill="liked ? '#BB1C1C' : '#fff'"
+                                :fill="data.votedFor ? '#BB1C1C' : '#fff'"
                                 class="cursor-pointer"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
@@ -73,7 +73,7 @@
                                 />
                             </svg>
                             <span class="text-gray-500 ml-2">{{
-                                likeCount
+                                data.likes
                             }}</span>
                             <svg
                                 width="36"
@@ -313,7 +313,6 @@ const props = defineProps({
 // VARS
 
 const liked = ref(false);
-const likeCount = ref(0);
 
 // Comment form
 
@@ -343,15 +342,13 @@ const like = () => {
 
         return;
     }
-
-    liked.value = !liked.value;
-    liked.value ? likeCount.value++ : likeCount.value--;
+    props.data.votedFor = !props.data.votedFor;
+    console.log(props.data.votedFor);
+    /* liked.value = !liked.value; */
+    liked.value ? props.data.likes++ : props.data.likes--;
 
     // TODO: send like to server
-    /* Inertia.post("/posts/like", {
-        post_id: props.data.post.id,
-        user_id: props.data.user.id,
-    }); */
+    Inertia.post(`/likes/${props.data.post.id}`);
 };
 
 const sendReport = () => {

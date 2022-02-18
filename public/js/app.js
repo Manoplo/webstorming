@@ -22376,8 +22376,7 @@ __webpack_require__.r(__webpack_exports__);
     expose();
     var props = __props; // VARS
 
-    var liked = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)(false);
-    var likeCount = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)(0); // Comment form
+    var liked = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)(false); // Comment form
 
     var commentForm = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({
       post_id: props.data.post.id,
@@ -22400,13 +22399,13 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      liked.value = !liked.value;
-      liked.value ? likeCount.value++ : likeCount.value--; // TODO: send like to server
+      props.data.votedFor = !props.data.votedFor;
+      console.log(props.data.votedFor);
+      /* liked.value = !liked.value; */
 
-      /* Inertia.post("/posts/like", {
-          post_id: props.data.post.id,
-          user_id: props.data.user.id,
-      }); */
+      liked.value ? props.data.likes++ : props.data.likes--; // TODO: send like to server
+
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post("/likes/".concat(props.data.post.id));
     };
 
     var sendReport = function sendReport() {
@@ -22476,7 +22475,6 @@ __webpack_require__.r(__webpack_exports__);
     var __returned__ = {
       props: props,
       liked: liked,
-      likeCount: likeCount,
       commentForm: commentForm,
       isLength: isLength,
       like: like,
@@ -24300,12 +24298,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     height: "36",
     "stroke-width": "1.5",
     viewBox: "0 0 24 24",
-    fill: $setup.liked ? '#BB1C1C' : '#fff',
+    fill: $props.data.votedFor ? '#BB1C1C' : '#fff',
     "class": "cursor-pointer",
     xmlns: "http://www.w3.org/2000/svg"
   }, _hoisted_26, 8
   /* PROPS */
-  , _hoisted_24)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.likeCount), 1
+  , _hoisted_24)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.data.likes), 1
   /* TEXT */
   ), _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.data.comments.length), 1
   /* TEXT */

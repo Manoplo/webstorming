@@ -39,4 +39,14 @@ class Post extends Model
     {
         return $this->belongsTo(Stack::class);
     }
+
+    /**
+     * A post can be liked by many users.
+     *
+     * @return relation to the user model in the posts_users table
+     */
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'post_users');
+    }
 }

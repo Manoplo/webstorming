@@ -3,6 +3,7 @@
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PostUserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -53,5 +54,10 @@ Route::post('posts/like', [PostController::class, 'like']);
 Route::post('comments/store', [CommentController::class, 'store']);
 Route::delete('comments/{comment}', [CommentController::class, 'destroy']);
 
+/**
+ * LIKES ROUTE
+ */
+
+Route::post('likes/{post}', [PostUserController::class, 'store']);
 
 require __DIR__ . '/auth.php';
