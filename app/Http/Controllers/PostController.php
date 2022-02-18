@@ -18,23 +18,22 @@ class PostController extends Controller
         $user = $post->user;
         $stack = $post->stack;
         // Traer los mensajes del post 
-        $comments = $post->comments;
+        /* $comments = $post->comments; */
 
-        // Traer los mensajes del post
+        // Traer los comentarios del post con los datos del autor. 
+        $comments = Comment::with('author')->where('post_id', $post->id)->get();
 
-        $authors = array();
-        foreach ($comments as $comment) {
-            $authors[] = $comment->author;
-        }
+        
+/* 
+        $comments = DateFormater::dateDiff($comments);
 
-
-
-        /* $post->create_at = DateFormater::singleDateDiff($post); */
+        dd($comments); */
 
         $data = [
             'user' => $user,
             'stack' => $stack,
             'post' => $post,
+            'comments' => $comments,
 
         ];
 

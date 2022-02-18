@@ -103,7 +103,9 @@
                                     stroke-linejoin="round"
                                 />
                             </svg>
-                            <span class="text-gray-500 ml-2">44</span>
+                            <span class="text-gray-500 ml-2">{{
+                                data.comments.length
+                            }}</span>
                             <!--REPORT SVG-->
                             <svg
                                 width="36"
@@ -133,6 +135,7 @@
                                 />
                             </svg>
                             <!--EDIT SVG-->
+                            <!--Si el id del creador del post es el mismo que el id del usuario autenticado, mostramos el botón de editar-->
                             <div v-if="$page.props.auth.user === data.user.id">
                                 <Link :href="`/posts/edit/${data.post.id}`">
                                     <svg
@@ -158,27 +161,90 @@
                     </div>
                 </div>
             </section>
-            <section class="w-100 sm:w-1/2">
-                <div class="border border-gray-300 rounded overflow-y-scroll">
-                    <div v-for="message in data.messages" :key="message.id">
-                        <div class="flex items-center p-2">
+
+            <!--COMMENTS SECTION //// -->
+            <section class="w-100 sm:w-1/2 bg-gray-100 rounded-3xl">
+                <div
+                    v-show="data.comments.length === 0"
+                    class="w-3/4 rounded-3xl shadow-xl bg-white flex items-center mx-auto justify-center mt-7 p-7"
+                >
+                    <h2>
+                        No comments yet 😥. Be the first to share your opinion!
+                    </h2>
+                </div>
+                <div class="overflow-y-scroll p-5 max-h-screen">
+                    <div v-for="comment in data.comments" :key="comment.id">
+                        <div
+                            class="flex items-center p-3 rounded-xl bg-white shadow-lg mb-3"
+                        >
                             <img
-                                :src="message.authors.image"
+                                :src="comment.author.image"
                                 alt="avatar"
-                                class="w-10 h-10 rounded-full mr-2"
+                                class="w-10 h-10 rounded mr-2"
                             />
                             <div class="flex-1">
                                 <div class="flex items-center">
-                                    <h3 class="text-gray-900 font-semibold">
-                                        {{ message.comments.body }}
-                                    </h3>
-                                    <span class="text-gray-500 ml-2">
-                                        {{ message.comments.created_at }}
-                                    </span>
+                                    <Link
+                                        :href="`/profiles/${comment.author.id}`"
+                                    >
+                                        <h3
+                                            class="text-gray-900 font-semibold hover:text-gray-700"
+                                        >
+                                            {{ comment.author.name }}
+                                        </h3>
+                                    </Link>
+                                    <small class="text-gray-500 ml-2">
+                                        {{ comment.created_at }}
+                                    </small>
                                 </div>
-                                <p class="text-gray-700">{{ comment.body }}</p>
+                                <small class="text-gray-700">{{
+                                    comment.body
+                                }}</small>
                             </div>
                         </div>
+                    </div>
+                    <div
+                        v-if="$page.props.auth.user"
+                        class="flex items-center p-7 rounded-xl gap-2 bg-white shadow-lg mb-3"
+                    >
+                        <form
+                            @submit.prevent="sendComment"
+                            class="flex w-full gap-3"
+                        >
+                            <input
+                                type="text"
+                                v-model="commentForm.body"
+                                placeholder="Share what you think"
+                                class="w-full border-gray-300 focus:border-yellow-300 focus:ring focus:ring-yellow-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                            />
+                            <div
+                                v-if="errors.body"
+                                v-text="errors.body"
+                                class="text-red-500 font-weight-light"
+                            ></div>
+                            <button
+                                type="submit"
+                                class="transition ease-in-out bg-yellow-600 rounded text-white text-capitalize p-3 hover:bg-yellow-400 hover:text-black"
+                            >
+                                Share
+                            </button>
+                        </form>
+                    </div>
+                    <div
+                        v-else
+                        class="flex items-center p-7 rounded-xl gap-2 bg-white shadow-lg mb-3"
+                    >
+                        <h3
+                            class="text-gray-600 font-light hover:text-gray-700"
+                        >
+                            Please
+                            <Link
+                                href="/login"
+                                class="text-yellow-400 underline font-semibold"
+                                >login</Link
+                            >
+                            to share your opinion
+                        </h3>
                     </div>
                 </div>
             </section>
@@ -189,7 +255,7 @@
 <script setup>
 import { Inertia } from "@inertiajs/inertia";
 import { Link } from "@inertiajs/inertia-vue3";
-import { usePage } from "@inertiajs/inertia-vue3";
+import { usePage, useForm } from "@inertiajs/inertia-vue3";
 import { ref, computed } from "vue";
 import Swal from "sweetalert2";
 
@@ -197,6 +263,7 @@ import Swal from "sweetalert2";
 
 const props = defineProps({
     data: Object,
+    errors: Object,
 });
 
 // VARS
@@ -204,9 +271,31 @@ const props = defineProps({
 const liked = ref(false);
 const likeCount = ref(0);
 
+// Comment form
+
+const commentForm = useForm({
+    post_id: props.data.post.id,
+    user_id: usePage().props.value.auth?.user?.id
+        ? usePage().props.value.auth.user.id
+        : null,
+    body: "",
+});
+
 // FUNCTIONS
 
 const like = () => {
+    if (!usePage().props.value.auth.user) {
+        Swal.fire({
+            title: "We apologize!",
+            text: "You must be logged in to like posts.",
+            icon: "warning",
+            confirmButtonColor: "#F0C400",
+            toast: true,
+        });
+
+        return;
+    }
+
     liked.value = !liked.value;
     liked.value ? likeCount.value++ : likeCount.value--;
 
@@ -221,13 +310,31 @@ const sendReport = () => {
     if (!usePage().props.value.auth.user) {
         Swal.fire({
             title: "Oops!",
-            text: "You must be logged in to report a post",
-            icon: "error",
+            text: "You must be logged in to report a webstorm",
+            icon: "warning",
             confirmButtonColor: "#F0C400",
+            toast: true,
         });
+
+        return;
     }
 
     // TODO, SEND EMAIL NOTIFICACTION TO ADMIN
+};
+
+const sendComment = () => {
+    commentForm.post("/comments/store");
+
+    Swal.fire({
+        title: "Thank you!",
+        text: "Your comment has been submitted.",
+        icon: "success",
+        toast: true,
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+    });
+    commentForm.reset();
 };
 </script>
 

@@ -23,6 +23,7 @@ class DateFormater
         foreach ($arr as $item) {
 
             $carbon = new Carbon();
+            $carbon->setTimezone('Europe/London');
             $item->created_at = $carbon->diffForHumans($item->created_at);
         }
 

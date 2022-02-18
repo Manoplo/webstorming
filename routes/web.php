@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -43,5 +44,13 @@ Route::get('cards/popular', [CardController::class, 'getPopular']);
 // TODO : CREATE CONTROLLER, OBJECT BINDING MODEL,  RETURN POST DATA WITH MESSAGES. 
 Route::get('posts/{post}', [PostController::class, 'show']);
 Route::post('posts/like', [PostController::class, 'like']);
+
+
+/**
+ * COMMENTS CONTROLLER ROUTES
+ */
+
+Route::post('comments/store', [CommentController::class, 'store']);
+
 
 require __DIR__ . '/auth.php';
