@@ -23074,7 +23074,7 @@ var _hoisted_3 = {
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
   type: "search",
   placeholder: "Search for stacks, users or webstorm ideas...",
-  "class": "w-96 p-2 border border-gray-200 focus:shadow-inner rounded-md"
+  "class": "w-96 p-2 border-gray-200 focus:outline-none focus:shadow-lg rounded-md"
 })], -1
 /* HOISTED */
 );

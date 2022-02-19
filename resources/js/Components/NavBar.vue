@@ -19,7 +19,7 @@
                 <input
                     type="search"
                     placeholder="Search for stacks, users or webstorm ideas..."
-                    class="w-96 p-2 border border-gray-200 focus:shadow-inner rounded-md"
+                    class="w-96 p-2 border-gray-200 focus:outline-none focus:shadow-lg rounded-md"
                 />
             </form>
 
