@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\DateFormater;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+
         $user = $post->user;
         $stack = $post->stack;
         $likes = $post->likes->count();

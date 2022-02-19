@@ -3,7 +3,9 @@
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\PostUserController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -59,5 +61,20 @@ Route::delete('comments/{comment}', [CommentController::class, 'destroy']);
  */
 
 Route::post('likes/{post}', [PostUserController::class, 'store']);
+
+
+/**
+ * PROFILE CONTROLLERS ROUTES
+ */
+
+Route::get('profiles/{user}', [ProfileController::class, 'index']);
+
+
+
+/**
+ * PROFILE PIC UPLOAD ROUTE
+ */
+
+ Route::post('/profiles/save-image', [FileController::class, 'store']);
 
 require __DIR__ . '/auth.php';
