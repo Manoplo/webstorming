@@ -14,7 +14,12 @@ use Inertia\Inertia;
 class PostController extends Controller
 {
 
-
+    /**
+     * Display a single Post vue component with its data and the messages tied to it. 
+     *
+     * @param Post $post
+     * @return Inertia\Response
+     */
     public function show(Post $post)
     {
 

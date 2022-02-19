@@ -7,7 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class FileController extends Controller
-{
+{   
+
+    /**
+     * Store a newly created profile avatar image resource in storage.
+     *
+     * @param FileRequest $request
+     * @return void
+     */
     public function store(FileRequest $request){
 
        

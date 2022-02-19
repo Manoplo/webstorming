@@ -1,4 +1,5 @@
 <script setup>
+import NavBar from "../Components/NavBar";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import Vue3Lottie from "vue3-lottie";
 import MainAnimation from "../lotties/mainAnim.json";
@@ -13,7 +14,8 @@ defineProps({
 <template>
     <Head title="Web Storming - Home" />
     <!--HEADER STARTS HERE-->
-    <header class="flex w-3/4 m-auto mt-48">
+    <NavBar />
+    <header class="flex w-3/4 mx-auto mt-48">
         <div class="sm:w-1/2 w-full">
             <h1 class="sm:text-9xl text-5xl lighter-h1 text-gray-800">Web</h1>
             <h1
@@ -28,7 +30,7 @@ defineProps({
             <div class="button-container mt-10">
                 <div v-if="$page.props.auth.user">
                     <Link
-                        :href="route('dashboard')"
+                        :href="`/profiles/${$page.props.auth.user.id}`"
                         class="transition ease-in-out text-base text-white p-4 bg-yellow-400 rounded shadow-sm hover:shadow-lg hover:bg-yellow-400 hover:text-black"
                     >
                         Go to my Profile
@@ -59,9 +61,9 @@ defineProps({
     <main>
         <section>
             <div class="block w-3/4 mx-auto mb-14 mt-14">
-                <h1 class="font-light text-gray-700 text-3xl">
+                <h1 class="font-light text-gray-700 text-3xl text-center">
                     Most recent
-                    <span class="font-bold text-yellow-600 text-3xl"
+                    <span class="font-bold text-yellow-500 text-3xl"
                         >webstormings</span
                     >
                 </h1>

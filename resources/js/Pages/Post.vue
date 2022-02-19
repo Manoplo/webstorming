@@ -1,4 +1,5 @@
 <template>
+    <NavBar />
     <div class="min-h-screen bg-gray-50">
         <main class="w-3/4 mx-auto pt-32 flex flex-wrap">
             <section class="sm:w-1/2 w-100 flex">
@@ -200,7 +201,7 @@
                                     <div
                                         v-if="
                                             comment.author.id ===
-                                            $page.props.auth.user.id
+                                            $page.props.auth?.user?.id
                                         "
                                     >
                                         <svg
@@ -297,6 +298,7 @@
 </template>
 
 <script setup>
+import NavBar from "../Components/NavBar.vue";
 import { Inertia } from "@inertiajs/inertia";
 import { Link } from "@inertiajs/inertia-vue3";
 import { usePage, useForm } from "@inertiajs/inertia-vue3";
