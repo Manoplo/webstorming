@@ -48,7 +48,7 @@
                             stroke-linejoin="round"
                         />
                     </svg>
-                    <span class="text-gray-500 ml-2">230</span>
+                    <span class="text-gray-500 ml-2">500</span>
                     <svg
                         width="24"
                         height="24"
@@ -77,7 +77,7 @@
                             stroke-linejoin="round"
                         />
                     </svg>
-                    <span class="text-gray-500 ml-2">44</span>
+                    <span class="text-gray-500 ml-2">300</span>
                 </div>
             </div>
         </div>

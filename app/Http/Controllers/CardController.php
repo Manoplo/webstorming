@@ -28,8 +28,8 @@ class CardController extends Controller
             ->orderBy('posts.created_at', 'desc')
             ->limit(6)
             ->get();
-
-
+        
+        
         /**
          * Using custom DateFormater class to serve json formatted data. 
          */
