@@ -15,11 +15,21 @@
             </div>
         </Link>
         <div class="flex items-center gap-3">
-            <form>
+            <form class="flex items-center">
+                <button
+                    type="submit"
+                    class="bg-transparent outline-none border-none mr-3"
+                >
+                    <img
+                        src="../../images/search.png"
+                        alt="search icon"
+                        class="w-5 h-5 object-cover"
+                    />
+                </button>
                 <input
                     type="search"
                     placeholder="Search for stacks, users or webstorm ideas..."
-                    class="w-96 p-2 border-gray-200 focus:outline-none focus:shadow-lg rounded-md"
+                    class="w-96 p-2 border-gray-200 focus:outline-yellow-500 focus:shadow-lg rounded-md search-bar focus:ring-yellow-500 focus:ring-inset-0"
                 />
             </form>
 
@@ -71,4 +81,4 @@ defineComponent({
 });
 </script>
 
-<style></style>
+<style scoped></style>
