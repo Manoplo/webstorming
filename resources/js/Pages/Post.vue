@@ -1,6 +1,13 @@
 <template>
     <NavBar />
+
     <div class="min-h-screen bg-gray-50">
+        <div
+            v-if="$page.props.flash.message"
+            class="bg-green-400 text-green-100 h-24 p-4 w-96 mx-auto rounded flex justify-center items-center absolute top-3/4 left-3/4 z-10 shadow-2xl"
+        >
+            {{ $page.props.flash.message }}
+        </div>
         <main class="w-3/4 mx-auto pt-32 flex flex-wrap">
             <section class="sm:w-1/2 w-100 flex">
                 <div
@@ -137,26 +144,72 @@
                             </svg>
                             <!--EDIT SVG-->
                             <!--Si el id del creador del post es el mismo que el id del usuario autenticado, mostramos el botón de editar-->
-                            <div v-if="$page.props.auth.user === data.user.id">
-                                <Link :href="`/posts/edit/${data.post.id}`">
+                            <div
+                                v-if="
+                                    $page.props.auth?.user?.id == data.user.id
+                                "
+                            >
+                                <div class="flex flex-row items-center">
+                                    <Link :href="`/posts/edit/${data.post.id}`">
+                                        <svg
+                                            width="25"
+                                            height="25"
+                                            stroke-width="1.5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="ml-5"
+                                        >
+                                            <path
+                                                d="M13.0207 5.82839L15.8491 2.99996L20.7988 7.94971L17.9704 10.7781M13.0207 5.82839L3.41405 15.435C3.22652 15.6225 3.12116 15.8769 3.12116 16.1421V20.6776H7.65669C7.92191 20.6776 8.17626 20.5723 8.3638 20.3847L17.9704 10.7781M13.0207 5.82839L17.9704 10.7781"
+                                                stroke="currentColor"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                    </Link>
+                                    <small class="text-gray-500 ml-2"
+                                        >Edit</small
+                                    >
                                     <svg
-                                        width="36"
-                                        height="36"
+                                        width="25"
+                                        height="25"
                                         stroke-width="1.5"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         xmlns="http://www.w3.org/2000/svg"
-                                        class="ml-5"
+                                        class="text-align-right ml-5 cursor-pointer hover:text-red-500"
+                                        @click="deletePost(data.post.id)"
                                     >
                                         <path
-                                            d="M13.0207 5.82839L15.8491 2.99996L20.7988 7.94971L17.9704 10.7781M13.0207 5.82839L3.41405 15.435C3.22652 15.6225 3.12116 15.8769 3.12116 16.1421V20.6776H7.65669C7.92191 20.6776 8.17626 20.5723 8.3638 20.3847L17.9704 10.7781M13.0207 5.82839L17.9704 10.7781"
+                                            d="M19 11V20.4C19 20.7314 18.7314 21 18.4 21H5.6C5.26863 21 5 20.7314 5 20.4V11"
+                                            stroke="currentColor"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                        <path
+                                            d="M10 17V11"
+                                            stroke="currentColor"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                        <path
+                                            d="M14 17V11"
+                                            stroke="currentColor"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                        <path
+                                            d="M21 7L16 7M3 7L8 7M8 7V3.6C8 3.26863 8.26863 3 8.6 3L15.4 3C15.7314 3 16 3.26863 16 3.6V7M8 7L16 7"
                                             stroke="currentColor"
                                             stroke-linecap="round"
                                             stroke-linejoin="round"
                                         />
                                     </svg>
-                                    <span class="text-gray-500 ml-2">Edit</span>
-                                </Link>
+                                    <small class="text-gray-500 ml-2"
+                                        >Delete</small
+                                    >
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -400,6 +453,40 @@ const deleteComment = (id) => {
                 Inertia.delete(`/comments/${id}`);
                 Swal.fire({
                     title: "Comment deleted successfully",
+                    icon: "success",
+                    toast: true,
+                    timer: 1500,
+                    showConfirmButton: false,
+                    timerProgressBar: true,
+                });
+            }
+        })
+        .catch(() => {
+            Swal.fire({
+                title: "Cancelled",
+                text: "Your comment is safe :)",
+                toast: true,
+                timer: 1500,
+                timerProgressBar: true,
+            });
+        });
+};
+const deletePost = (id) => {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this and all post related info will be lost!",
+        icon: "warning",
+        showDenyButton: true,
+        confirmButtonText: "Yes, delete it!",
+        confirmButtonColor: "#F0C400",
+
+        toast: true,
+    })
+        .then((result) => {
+            if (result.isConfirmed) {
+                Inertia.delete(`/posts/${id}`);
+                Swal.fire({
+                    title: "Post deleted successfully",
                     icon: "success",
                     toast: true,
                     timer: 1500,

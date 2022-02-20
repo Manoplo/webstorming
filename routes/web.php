@@ -47,6 +47,8 @@ Route::get('cards/popular', [CardController::class, 'getPopular']);
 // TODO : CREATE CONTROLLER, OBJECT BINDING MODEL,  RETURN POST DATA WITH MESSAGES. 
 Route::get('posts/{post}', [PostController::class, 'show']);
 Route::post('posts/like', [PostController::class, 'like']);
+Route::post('posts/store', [PostController::class, 'store']);
+Route::delete('posts/{post}', [PostController::class, 'destroy']);
 
 
 /**

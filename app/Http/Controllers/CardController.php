@@ -35,6 +35,6 @@ class CardController extends Controller
          */
         $cardData = DateFormater::dateDiff($cardData);
 
-        return response()->json($cardData);
+        return response()->json($cardData, 200);
     }
 }

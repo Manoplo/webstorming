@@ -11,11 +11,9 @@
                 v-model="form.title"
                 class="w-full p-3 border-gray-300 rounded-md focus:border-yellow-300 focus:ring focus:ring-yellow-200 focus:ring-opacity-50"
             />
-            <!--  <div
-                v-if="errors.title"
-                v-html="errors.title"
-                class="text-light text-red-700"
-            ></div> -->
+            <div v-if="errors.title" class="text-red-500 font-weight-light">
+                {{ errors.title }}
+            </div>
             <!--POST DESCRIPTION-->
             <label for="description" class="text-yellow-600"
                 >Brief description</label
@@ -26,11 +24,9 @@
                 v-model="form.description"
                 class="w-full p-3 border-gray-300 rounded-md focus:border-yellow-300 focus:ring focus:ring-yellow-200 focus:ring-opacity-50"
             />
-            <!--  <div
-                v-if="errors.description"
-                v-html="errors.description"
-                class="text-light text-red-700"
-            ></div> -->
+            <div v-if="errors.description" class="text-light text-red-700">
+                {{ errors.description }}
+            </div>
             <!--POST TYPE-->
             <label class="text-yellow-600" for="type"
                 >What kind of app are you building?</label
@@ -38,6 +34,7 @@
             <select
                 class="w-full p-3 border-gray-300 rounded-md focus:border-yellow-300 focus:ring focus:ring-yellow-200 focus:ring-opacity-50"
                 id="type"
+                v-model="form.type"
             >
                 <option value="E-commerce">E-commerce</option>
                 <option value="Blog">Blog</option>
@@ -50,9 +47,27 @@
                 <option value="Service">Service</option>
                 <option value="Other">Other</option>
             </select>
+            <!--STACKS-->
+            <label class="text-yellow-600" for="type"
+                >Choose your prefered client/server stack</label
+            >
+            <select
+                class="w-full p-3 border-gray-300 rounded-md focus:border-yellow-300 focus:ring focus:ring-yellow-200 focus:ring-opacity-50"
+                id="stacks"
+                v-model="form.stack_id"
+            >
+                <option
+                    v-for="stack in stacks"
+                    :key="stack.id"
+                    :value="stack.id"
+                    class="text-gray-700"
+                >
+                    {{ stack.name }}
+                </option>
+            </select>
             <input
                 type="submit"
-                class="transition ease-in-out cursor-pointer bg-yellow-400 w-1/4 text-black rounded p-3 hover:text-white hover:bg-yellow-500 hover:shadow-md"
+                class="transition ease-in-out cursor-pointer bg-yellow-400 sm:w-1/4 w-100 text-black rounded p-3 hover:text-white hover:bg-yellow-500 hover:shadow-md"
                 value="CREATE"
             />
         </form>
@@ -76,6 +91,23 @@ const form = useForm({
     stack_id: "",
     type: "",
 });
+
+const sendPost = () => {
+    console.log(form);
+
+    form.post("/posts/store");
+    if (props.errors) {
+        return;
+    }
+    Swal.fire({
+        title: "Post Created!",
+        text: "Your post has been created!",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        toast: true,
+    });
+};
 </script>
 
 <style></style>

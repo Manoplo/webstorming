@@ -265,7 +265,7 @@
                     </div>
                 </div>
                 <div v-else>
-                    <PostForm />
+                    <PostForm :stacks="stacks" :errors="errors" />
                 </div>
             </Transition>
             <div
@@ -298,6 +298,7 @@ import Swal from "sweetalert2";
 // PROPS
 const props = defineProps({
     user: Object,
+    stacks: Array,
     errors: Object,
 });
 

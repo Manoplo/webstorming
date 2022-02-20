@@ -25,6 +25,7 @@ const cards = ref([]);
 
 const fetchCards = async () => {
     const { data } = await axios.get("/cards/recent");
+    console.log(data);
 
     cards.value = data;
 };
