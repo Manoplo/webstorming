@@ -3,6 +3,7 @@
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DisplayController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\PostUserController;
 use App\Http\Controllers\ProfileController;
@@ -78,6 +79,14 @@ Route::get('profiles/{user}', [ProfileController::class, 'index']);
  * PROFILE PIC UPLOAD ROUTE
  */
 
- Route::post('/profiles/save-image', [FileController::class, 'store']);
+Route::post('/profiles/save-image', [FileController::class, 'store']);
+
+
+/**
+ * SHOW ALL CARDS/STORMS ROUTES
+ */
+
+Route::get('newest', [DisplayController::class, 'newest'])->name('newest');
+Route::get('cards/voted', [DisplayController::class, 'popular']);
 
 require __DIR__ . '/auth.php';

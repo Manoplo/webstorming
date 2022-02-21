@@ -26,11 +26,12 @@ class CardController extends Controller
         return response()->json($data, 200);
     }
 
-    public function getByUser(User $user){
+    public function getByUser(User $user)
+    {
         $query = new QueryConstructor();
         $data = $query->getCardsByUser($user->id);
-        
-        
+
+
         return response()->json($data, 200);
     }
 }

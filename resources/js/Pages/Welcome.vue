@@ -31,7 +31,7 @@ defineProps({
                 <div v-if="$page.props.auth.user">
                     <Link
                         :href="`/profiles/${$page.props.auth.user.id}`"
-                        class="transition ease-in-out text-base text-white p-4 bg-yellow-400 rounded shadow-sm hover:shadow-lg hover:bg-yellow-400 hover:text-black"
+                        class="transition ease-in-out text-base text-white p-4 bg-yellow-400 rounded shadow-sm hover:shadow-lg hover:-translate-y-2 hover:bg-yellow-400 hover:text-black"
                     >
                         Go to my Profile
                     </Link>
@@ -39,7 +39,7 @@ defineProps({
                 <div v-else>
                     <Link
                         :href="route('login')"
-                        class="transition ease-in-out text-base text-black p-4 bg-yellow-400 rounded shadow-sm hover:shadow-lg hover:bg-yellow-500 hover:text-white"
+                        class="transition ease-in-out text-base text-black p-4 bg-yellow-400 rounded shadow-sm hover:shadow-lg hover:-translate-y-2 hover:bg-yellow-500 hover:text-white"
                     >
                         Log in
                     </Link>
@@ -47,7 +47,7 @@ defineProps({
                     <Link
                         v-if="canRegister"
                         :href="route('register')"
-                        class="transition ease-in-out ml-4 text-base text-black p-4 bg-yellow-400 rounded shadow-sm hover:shadow-lg hover:bg-yellow-500 hover:text-white"
+                        class="transition ease-in-out ml-4 text-base text-black p-4 bg-yellow-400 rounded shadow-sm hover:shadow-lg hover:-translate-y-2 hover:bg-yellow-500 hover:text-white"
                     >
                         Register
                     </Link>
@@ -69,6 +69,24 @@ defineProps({
                 </h1>
             </div>
             <MostRecent />
+            <div class="flex justify-center w-3/4 mx-auto mb-14 mt-14">
+                <Link
+                    :href="route('newest')"
+                    class="transition w-48 mx-auto ease-in-out text-center text-lg hover:-translate-y-2 hover:border-gray-800 text-black p-4 bg-yellow-400 rounded shadow-sm hover:shadow-lg hover:bg-yellow-500 hover:text-white"
+                >
+                    See more
+                </Link>
+            </div>
+        </section>
+        <section>
+            <div class="block w-3/4 mx-auto mb-14 mt-14">
+                <h1 class="font-light text-gray-700 text-3xl text-center">
+                    Most popular
+                    <span class="font-bold text-yellow-500 text-3xl"
+                        >webstormings</span
+                    >
+                </h1>
+            </div>
         </section>
     </main>
 </template>
