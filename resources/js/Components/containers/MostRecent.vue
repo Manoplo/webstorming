@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div class="flex flex-wrap w-3/4 mx-auto gap-10">
+        <div class="flex flex-wrap w-3/4 justify-center mx-auto gap-10">
             <div v-for="card in cards" :key="card.id" class="w-100 sm:w-[28%]">
                 <PostCard :href="`/posts/${card.id}`" :card="card" />
             </div>

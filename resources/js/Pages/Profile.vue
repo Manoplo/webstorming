@@ -1,7 +1,7 @@
 <template>
     <main>
         <NavBar />
-        <section class="container w-3/4 mx-auto px-4 pt-28">
+        <section class="container w-3/4 mx-auto px-4 pt-28 mb-20">
             <Transition name="fade" mode="out-in">
                 <div v-if="profile">
                     <div
@@ -176,7 +176,7 @@
                                     <h3
                                         class="text-3xl font-bold text-gray-800"
                                     >
-                                        4
+                                        {{ info.numPosts }}
                                     </h3>
                                 </div>
                                 <p class="text-gray-500 text-sm">
@@ -247,7 +247,7 @@
                                     <h3
                                         class="text-3xl font-bold text-gray-800"
                                     >
-                                        31
+                                        {{ info.numComments }}
                                     </h3>
                                 </div>
                                 <p class="text-gray-500 text-sm">opinions</p>
@@ -287,6 +287,64 @@
         </section>
         <section>
             <!--HERE COMES TAB SYSTEM COMPONENT WITH USERS POSTS, BROWSE POSTS AND BROWSE USERS-->
+            <div v-if="$page.props.auth?.user?.id === user.id">
+                <h1>Here comes the tab system</h1>
+            </div>
+            <div v-else>
+                <div class="flex items-center justify-center gap-3 mb-5">
+                    <svg
+                        width="36"
+                        height="36"
+                        stroke-width="1.5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M11.5 12L9 17H15L12.5 22"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        <path
+                            d="M20 17.6073C21.4937 17.0221 23 15.6889 23 13C23 9 19.6667 8 18 8C18 6 18 2 12 2C6 2 6 6 6 8C4.33333 8 1 9 1 13C1 15.6889 2.50628 17.0221 4 17.6073"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                    <h1 class="font-normal text-black text-center text-2xl">
+                        {{ user.name }}´s
+                        <span class="text-yellow-500 font-bold"
+                            >webstormings</span
+                        >
+                    </h1>
+                </div>
+
+                <hr />
+                <section>
+                    <div
+                        v-if="!cards.length"
+                        class="flex justify-center mx-auto mt-5"
+                    >
+                        <h1 class="text-3xl font-normal">
+                            No contributions yet... 🙁
+                        </h1>
+                    </div>
+                    <div
+                        v-else
+                        class="flex flex-wrap w-3/4 justify-center mx-auto mt-5 gap-10"
+                    >
+                        <div
+                            v-for="card in cards"
+                            :key="card.id"
+                            class="w-100 sm:w-[28%]"
+                        >
+                            <Card :href="`/posts/${card.id}`" :card="card" />
+                        </div>
+                    </div>
+                </section>
+            </div>
         </section>
     </main>
 </template>
@@ -294,20 +352,25 @@
 <script setup>
 import NavBar from "../Components/NavBar.vue";
 import PostForm from "../Components/PostForm.vue";
-import { useForm } from "@inertiajs/inertia-vue3";
-import { ref, computed } from "vue";
+import Card from "../Components/PostCard.vue";
+import { useForm, usePage } from "@inertiajs/inertia-vue3";
+import { ref, computed, onMounted } from "vue";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 // PROPS
 const props = defineProps({
     user: Object,
+    info: Object,
     stacks: Array,
     errors: Object,
+    cards: Array,
 });
 
 // VARS
 
 const profile = ref(true);
+const cards = ref([]);
 
 const form = useForm({
     image: null,
@@ -327,6 +390,12 @@ const setPreviewImage = computed(() => {
 const onSelectImage = () => {
     imageSelector.value.click();
 };
+// Load user webstorm cards.
+const loadUserCards = async () => {
+    const { data } = await axios.get(`/cards/${props.user.id}`);
+    console.log(data);
+    cards.value = data.cardData;
+};
 // Send image to server
 const saveImage = () => {
     form.post("/profiles/save-image");
@@ -341,6 +410,11 @@ const saveImage = () => {
 
     form.reset();
 };
+
+// LifeCycle Hooks
+onMounted(() => {
+    loadUserCards();
+});
 </script>
 
 <style scoped>

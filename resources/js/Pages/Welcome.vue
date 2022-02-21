@@ -3,7 +3,7 @@ import NavBar from "../Components/NavBar";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import Vue3Lottie from "vue3-lottie";
 import MainAnimation from "../lotties/mainAnim.json";
-import MostRecent from "../components/containers/MostRecent";
+import MostRecent from "../Components/containers/MostRecent";
 
 defineProps({
     canLogin: Boolean,
@@ -15,7 +15,7 @@ defineProps({
     <Head title="Web Storming - Home" />
     <!--HEADER STARTS HERE-->
     <NavBar />
-    <header class="flex w-3/4 mx-auto mt-48">
+    <header class="flex w-3/4 justify-center mx-auto mt-48">
         <div class="sm:w-1/2 w-full">
             <h1 class="sm:text-9xl text-5xl lighter-h1 text-gray-800">Web</h1>
             <h1

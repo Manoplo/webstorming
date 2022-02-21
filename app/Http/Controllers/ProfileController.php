@@ -18,8 +18,15 @@ class ProfileController extends Controller
     public function index(User $user){
 
         $stacks = Stack::all();
+        $numComments = $user->comments()->count();
+        $numPosts = $user->posts()->count();
+
+        $info = [
+            'numComments' => $numComments,
+            'numPosts' => $numPosts,
+        ];
         
-        return Inertia::render('Profile', ['user' => $user, 'stacks' => $stacks]);
+        return Inertia::render('Profile', ['user' => $user, 'stacks' => $stacks, 'info' => $info]);
         
     }
 }

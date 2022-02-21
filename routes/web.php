@@ -40,6 +40,7 @@ Route::get('/dashboard', function () {
 
 Route::get('cards/recent', [CardController::class, 'getRecent']);
 Route::get('cards/popular', [CardController::class, 'getPopular']);
+Route::get('cards/{user}', [CardController::class, 'getByUser']);
 
 /**
  * POST CONTROLLER ROUTES
