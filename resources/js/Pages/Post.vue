@@ -4,7 +4,7 @@
     <div class="min-h-screen bg-gray-50">
         <div
             v-if="$page.props.flash.message"
-            class="bg-green-400 text-green-100 h-24 p-4 w-96 mx-auto rounded flex justify-center items-center absolute top-3/4 left-3/4 z-10 shadow-2xl"
+            class="bg-green-400 text-green-100 h-24 p-4 w-96 mx-auto rounded flex justify-center items-center absolute sm:top-3/4 top-2/4 left-3/4 z-10 shadow-2xl"
         >
             {{ $page.props.flash.message }}
         </div>

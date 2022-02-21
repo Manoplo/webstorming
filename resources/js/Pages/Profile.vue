@@ -285,6 +285,9 @@
                 <h3 v-else class="text-gray-600">DISPLAY PROFILE</h3>
             </div>
         </section>
+        <section>
+            <!--HERE COMES TAB SYSTEM COMPONENT WITH USERS POSTS, BROWSE POSTS AND BROWSE USERS-->
+        </section>
     </main>
 </template>
 

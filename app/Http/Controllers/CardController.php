@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\DateFormater;
+use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,13 +29,26 @@ class CardController extends Controller
             ->orderBy('posts.created_at', 'desc')
             ->limit(6)
             ->get();
+
+        // Bring number of comments and likes for each post.
+        $posts = Post::withCount('comments')->latest()->limit(6)->get();
+        $likes = Post::withCount('likes')->latest()->limit(6)->get();
         
-        
+        // Append number of comments and likes to each row
+        $cardData = $cardData->map(function ($card) use ($posts, $likes) {
+            $card->comments_count = $posts->where('id', $card->id)->first()['comments_count'];
+            $card->likes_count = $likes->where('id', $card->id)->first()['likes_count'];
+            return $card;
+        });
         /**
          * Using custom DateFormater class to serve json formatted data. 
          */
         $cardData = DateFormater::dateDiff($cardData);
 
-        return response()->json($cardData, 200);
+        $data = [
+            'cardData' => $cardData,
+        ];
+
+        return response()->json($data, 200);
     }
 }

@@ -48,7 +48,9 @@
                             stroke-linejoin="round"
                         />
                     </svg>
-                    <span class="text-gray-500 ml-2">500</span>
+                    <span class="text-gray-500 ml-2">{{
+                        card.likes_count
+                    }}</span>
                     <svg
                         width="24"
                         height="24"
@@ -77,7 +79,9 @@
                             stroke-linejoin="round"
                         />
                     </svg>
-                    <span class="text-gray-500 ml-2">300</span>
+                    <span class="text-gray-500 ml-2">{{
+                        card.comments_count
+                    }}</span>
                 </div>
             </div>
         </div>

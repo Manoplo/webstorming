@@ -24,7 +24,7 @@
                 v-model="form.description"
                 class="w-full p-3 border-gray-300 rounded-md focus:border-yellow-300 focus:ring focus:ring-yellow-200 focus:ring-opacity-50"
             />
-            <div v-if="errors.description" class="text-light text-red-700">
+            <div v-if="errors.description" class="text-light text-red-500">
                 {{ errors.description }}
             </div>
             <!--POST TYPE-->
@@ -96,7 +96,8 @@ const sendPost = () => {
     console.log(form);
 
     form.post("/posts/store");
-    if (props.errors) {
+    if (props.errors !== null) {
+        props.errors = null;
         return;
     }
     Swal.fire({

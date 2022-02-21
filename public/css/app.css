@@ -650,8 +650,8 @@ select {
 .top-\[85\%\] {
   top: 85%;
 }
-.top-3\/4 {
-  top: 75%;
+.top-2\/4 {
+  top: 50%;
 }
 .left-3\/4 {
   left: 75%;
@@ -1737,6 +1737,10 @@ options[selected] {
   }
 }
 @media (min-width: 640px) {
+
+  .sm\:top-3\/4 {
+    top: 75%;
+  }
 
   .sm\:-my-px {
     margin-top: -1px;

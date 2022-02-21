@@ -27,7 +27,7 @@ const fetchCards = async () => {
     const { data } = await axios.get("/cards/recent");
     console.log(data);
 
-    cards.value = data;
+    cards.value = data.cardData;
 };
 onBeforeMount(() => {
     fetchCards();
