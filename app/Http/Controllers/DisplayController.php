@@ -21,4 +21,9 @@ class DisplayController extends Controller
             'cards' => $cards,
         ]);
     }
+
+    public function popular()
+    {
+        return Inertia::render('DisplayPopular');
+    }
 }

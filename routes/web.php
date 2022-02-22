@@ -40,7 +40,7 @@ Route::get('/dashboard', function () {
  */
 
 Route::get('cards/recent', [CardController::class, 'getRecent']);
-Route::get('cards/popular', [CardController::class, 'getPopular']);
+Route::get('cards/popular', [CardController::class, 'getByPopular']);
 Route::get('cards/{user}', [CardController::class, 'getByUser']);
 
 /**
@@ -87,6 +87,6 @@ Route::post('/profiles/save-image', [FileController::class, 'store']);
  */
 
 Route::get('newest', [DisplayController::class, 'newest'])->name('newest');
-Route::get('cards/voted', [DisplayController::class, 'popular']);
+Route::get('voted', [DisplayController::class, 'popular'])->name('voted');
 
 require __DIR__ . '/auth.php';

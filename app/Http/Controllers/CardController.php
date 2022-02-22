@@ -26,6 +26,13 @@ class CardController extends Controller
         return response()->json($data, 200);
     }
 
+    public function getByPopular(){
+        $query = new QueryConstructor();
+        $data = $query->getCardsByMostPopular(6);
+
+        return response()->json($data, 200);
+    }
+
     public function getByUser(User $user)
     {
         $query = new QueryConstructor();

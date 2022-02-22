@@ -103,8 +103,37 @@ class QueryConstructor
 
 
         // Bring number of comments and likes for each post.
-        $posts = Post::withCount('comments')->latest()->paginate($pagination);
-        $likes = Post::withCount('likes')->latest()->paginate($pagination);
+        $posts = Post::withCount('comments')->latest()->get();
+        $likes = Post::withCount('likes')->latest()->get();
+
+        /* $items = $cardData->items(); */
+
+        // Append number of comments and likes to each row
+        /* $cardData = $cardData->map(function ($card) use ($posts, $likes) {
+            $card->comments_count = $posts->where('id', $card->id)->first()['comments_count'];
+            $card->likes_count = $likes->where('id', $card->id)->first()['likes_count'];
+            return $card;
+        }); */
+        /**
+         * Using custom DateFormater class to serve json formatted data. 
+         */
+        $cardData = DateFormater::dateDiff($cardData);
+
+        
+
+        return $cardData;
+    }
+
+    public function getCardsByMostPopular(){
+        $cardData = DB::table('posts')
+            ->join('users', 'users.id', '=', 'posts.user_id')
+            ->join('stacks', 'stacks.id', '=', 'posts.stack_id')
+            ->select('posts.id', 'posts.title', 'posts.description', 'posts.created_at', 'users.name as user_name', 'users.image as user_image', 'stacks.name as stack_name', 'stacks.image as stack_image')
+            ->get();
+
+        // Bring number of comments and likes for each post.
+        $posts = Post::withCount('comments')->get();
+        $likes = Post::withCount('likes')->get();
 
         // Append number of comments and likes to each row
         $cardData = $cardData->map(function ($card) use ($posts, $likes) {
@@ -112,11 +141,15 @@ class QueryConstructor
             $card->likes_count = $likes->where('id', $card->id)->first()['likes_count'];
             return $card;
         });
+
+        $cardData = $cardData->sortBy('likes_count', SORT_ASC);
+
+        
+
         /**
          * Using custom DateFormater class to serve json formatted data. 
          */
         $cardData = DateFormater::dateDiff($cardData);
-
         $data = [
             'cardData' => $cardData,
         ];

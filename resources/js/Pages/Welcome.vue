@@ -4,6 +4,7 @@ import { Head, Link } from "@inertiajs/inertia-vue3";
 import Vue3Lottie from "vue3-lottie";
 import MainAnimation from "../lotties/mainAnim.json";
 import MostRecent from "../Components/containers/MostRecent";
+import MostPopular from "../Components/containers/MostPopular";
 
 defineProps({
     canLogin: Boolean,
@@ -86,6 +87,15 @@ defineProps({
                         >webstormings</span
                     >
                 </h1>
+            </div>
+            <MostPopular />
+            <div class="flex justify-center w-3/4 mx-auto mb-14 mt-14">
+                <Link
+                    :href="route('voted')"
+                    class="transition w-48 mx-auto ease-in-out text-center text-lg hover:-translate-y-2 hover:border-gray-800 text-black p-4 bg-yellow-400 rounded shadow-sm hover:shadow-lg hover:bg-yellow-500 hover:text-white"
+                >
+                    Browse all
+                </Link>
             </div>
         </section>
     </main>
