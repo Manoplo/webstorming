@@ -119,12 +119,13 @@ class QueryConstructor
          */
         $cardData = DateFormater::dateDiff($cardData);
 
-        
+
 
         return $cardData;
     }
 
-    public function getCardsByMostPopular(){
+    public function getCardsByMostPopular()
+    {
         $cardData = DB::table('posts')
             ->join('users', 'users.id', '=', 'posts.user_id')
             ->join('stacks', 'stacks.id', '=', 'posts.stack_id')
@@ -144,7 +145,7 @@ class QueryConstructor
 
         $cardData = $cardData->sortBy('likes_count', SORT_ASC);
 
-        
+
 
         /**
          * Using custom DateFormater class to serve json formatted data. 
@@ -153,6 +154,21 @@ class QueryConstructor
         $data = [
             'cardData' => $cardData,
         ];
+
+        return $data;
+    }
+
+    public function getLiveResults($query)
+    {
+        $data = DB::table('posts')
+            ->join('users', 'users.id', '=', 'posts.user_id')
+            ->join('stacks', 'stacks.id', '=', 'posts.stack_id')
+            ->select('posts.id', 'posts.title', 'posts.description', 'users.name as user_name', 'users.image as user_image', 'stacks.name as stack_name', 'stacks.image as stack_image')
+            ->where('posts.title', 'like', '%' . $query . '%')
+            ->orWhere('posts.description', 'like', '%' . $query . '%')
+            ->orWhere('users.name', 'like', '%' . $query . '%')
+            ->orWhere('stacks.name', 'like', '%' . $query . '%')
+            ->get();
 
         return $data;
     }

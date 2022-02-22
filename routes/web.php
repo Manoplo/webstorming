@@ -7,6 +7,7 @@ use App\Http\Controllers\DisplayController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\PostUserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -88,5 +89,11 @@ Route::post('/profiles/save-image', [FileController::class, 'store']);
 
 Route::get('newest', [DisplayController::class, 'newest'])->name('newest');
 Route::get('voted', [DisplayController::class, 'popular'])->name('voted');
+
+/**
+ * LIVE SEATCH
+ */
+
+Route::get('/livesearch', [SearchController::class, 'liveSearch']);
 
 require __DIR__ . '/auth.php';

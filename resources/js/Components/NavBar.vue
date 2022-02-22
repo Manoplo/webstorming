@@ -16,24 +16,29 @@
         </Link>
 
         <div class="hidden lg:flex items-center gap-3">
-            <form class="flex items-center">
-                <button
-                    type="submit"
-                    class="bg-transparent outline-none border-none mr-3"
-                >
-                    <img
-                        src="../../images/search.png"
-                        alt="search icon"
-                        class="w-5 h-5 object-cover"
-                    />
-                </button>
+            <!--SEARCH BAR AND DISPLAY RESULTS-->
+            <div class="relative" id="divsearch">
                 <input
                     type="search"
                     placeholder="Search for stacks, users or webstorm ideas..."
+                    v-model="search"
+                    @focus="searchFocus = true"
                     class="w-96 p-2 border-gray-200 focus:outline-yellow-500 focus:shadow-lg rounded-md search-bar focus:ring-yellow-500 focus:ring-inset-0"
                 />
-            </form>
-
+                <ul
+                    v-if="search.length"
+                    class="absolute top-14 left-0 bg-white shadow-lg rounded p-5 max-h-96 w-full overflow-y-auto"
+                >
+                    <li v-for="result in data" :key="result.id">
+                        <Link :href="`/posts/${result.id}`">
+                            <h2>{{ result.user_name }}</h2>
+                            <p>{{ result.stack_name }}</p>
+                            <p>{{ result.title }}</p>
+                        </Link>
+                    </li>
+                </ul>
+            </div>
+            <!--END OF SEARCH BAR-->
             <div v-if="$page.props.auth.user" class="flex items-center gap-3">
                 <span class="text-md text-black font-semibold">
                     <p class="font-semibold">
@@ -167,13 +172,52 @@
 </template>
 
 <script setup>
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, watch } from "vue";
 import { Link } from "@inertiajs/inertia-vue3";
+import throttle from "lodash/throttle";
+import debounce from "lodash/debounce";
+
+import axios from "axios";
 defineComponent({
     name: Link,
 });
 
+const data = ref([]);
+
 const isOpenMenu = ref(false);
+const search = ref("");
+const searchFocus = ref(false);
+
+watch(
+    search,
+    debounce(function (value) {
+        axios
+            .get("/livesearch", {
+                params: {
+                    search: value,
+                },
+            })
+            .then((res) => {
+                data.value = res.data;
+                console.log(data.value);
+            });
+    }, 500)
+);
+
+/* const getResults = () => {
+    throttle(function () {
+        axios
+            .get("/livesearch", {
+                params: {
+                    search: search.value,
+                },
+            })
+            .then((res) => {
+                data.value = res.data;
+                console.log(data.value);
+            });
+    }, 1000);
+}; */
 
 const toggleMenu = () => {
     isOpenMenu.value = !isOpenMenu.value;
