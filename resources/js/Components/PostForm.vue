@@ -93,8 +93,6 @@ const form = useForm({
 });
 
 const sendPost = () => {
-    console.log(form);
-
     form.post("/posts/store");
     if (props.errors !== null) {
         props.errors = null;

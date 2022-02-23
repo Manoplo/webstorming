@@ -76,6 +76,7 @@ Route::post('likes/{post}', [PostUserController::class, 'store']);
  */
 
 Route::get('profiles/{user}', [ProfileController::class, 'index']);
+Route::post('profiles/update/{user}', [ProfileController::class, 'update']);
 
 
 
@@ -90,7 +91,7 @@ Route::post('/profiles/save-image', [FileController::class, 'store']);
  * SHOW ALL CARDS/STORMS ROUTES
  */
 
-Route::get('newest', [DisplayController::class, 'newest'])->name('newest')  ;
+Route::get('newest', [DisplayController::class, 'newest'])->name('newest');
 Route::get('voted', [DisplayController::class, 'popular'])->name('voted');
 
 /**
@@ -103,6 +104,6 @@ Route::get('/livesearch', [SearchController::class, 'liveSearch']);
  * MAIL ROUTES
  */
 
- Route::post('/reports', [EmailController::class, 'sendReport']);
+Route::post('/reports', [EmailController::class, 'sendReport']);
 
 require __DIR__ . '/auth.php';

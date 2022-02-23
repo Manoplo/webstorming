@@ -83,7 +83,7 @@
                 />
                 <Link
                     :href="`/posts/${post.id}`"
-                    class="transition ease-in-out cursor-pointer bg-red-400 p-3 text-white hover:text-black hover:bg-red-500"
+                    class="transition ease-in-out cursor-pointer rounded bg-red-400 p-3 text-white hover:text-black hover:bg-red-500"
                     >Cancel</Link
                 >
             </div>

@@ -216,7 +216,6 @@ watch(
             })
             .then((res) => {
                 data.value = res.data;
-                console.log(data.value);
             });
     }, 500)
 );

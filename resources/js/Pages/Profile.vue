@@ -205,7 +205,7 @@
                                     <h3
                                         class="text-3xl font-bold text-gray-800"
                                     >
-                                        15
+                                        {{ info.numLikes }}
                                     </h3>
                                 </div>
                                 <p class="text-gray-500 text-sm">
@@ -395,7 +395,6 @@ const onSelectImage = () => {
 // Load user webstorm cards.
 const loadUserCards = async () => {
     const { data } = await axios.get(`/cards/${props.user.id}`);
-    console.log(data);
     cards.value = data.cardData;
 };
 // Send image to server
