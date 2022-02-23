@@ -23029,7 +23029,7 @@ __webpack_require__.r(__webpack_exports__);
           text: "This report will be send to the site admins.",
           icon: "warning",
           showDenyButton: true,
-          confirmButtonText: "Yes, delete it!",
+          confirmButtonText: "Yes, I wanna report it",
           confirmButtonColor: "#F0C400",
           toast: true
         }).then(function (result) {
