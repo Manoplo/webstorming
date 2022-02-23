@@ -288,36 +288,7 @@
         <section>
             <!--HERE COMES TAB SYSTEM COMPONENT WITH USERS POSTS, BROWSE POSTS AND BROWSE USERS-->
             <div v-if="$page.props.auth?.user?.id === user.id">
-                <div
-                    class="flex items-center justify-center gap-20 sm:gap-48 mb-5"
-                >
-                    <div @click="isProfile = false" class="cursor-pointer">
-                        <h2
-                            class="text-gray-600 text-2xl"
-                            :class="{
-                                underline: !isProfile,
-                                'decoration-gray-900': !isProfile,
-                                'decoration-4': !isProfile,
-                                'underline-offset-8': !isProfile,
-                            }"
-                        >
-                            YOUR WEBSTORMS
-                        </h2>
-                    </div>
-                    <div @click="isProfile = true" class="cursor-pointer">
-                        <h2
-                            class="text-gray-600 text-2xl"
-                            :class="{
-                                underline: isProfile,
-                                'decoration-gray-900': isProfile,
-                                'decoration-4': isProfile,
-                                'underline-offset-8': isProfile,
-                            }"
-                        >
-                            EDIT PROFILE
-                        </h2>
-                    </div>
-                </div>
+                <ProfileTabs :cards="cards" />
             </div>
             <!--THE USER IS NOT THE AUTH USER-->
             <div v-else>
@@ -383,6 +354,7 @@
 import NavBar from "../Components/NavBar.vue";
 import PostForm from "../Components/PostForm.vue";
 import Card from "../Components/PostCard.vue";
+import ProfileTabs from "../Components/ProfileTabs.vue";
 import { useForm, usePage } from "@inertiajs/inertia-vue3";
 import { ref, computed, onMounted } from "vue";
 import Swal from "sweetalert2";
@@ -401,7 +373,6 @@ const props = defineProps({
 
 const profile = ref(true);
 const cards = ref([]);
-const isProfile = ref(false);
 
 const form = useForm({
     image: null,
