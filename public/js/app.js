@@ -23221,6 +23221,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     var profile = (0,vue__WEBPACK_IMPORTED_MODULE_5__.ref)(true);
     var cards = (0,vue__WEBPACK_IMPORTED_MODULE_5__.ref)([]);
+    var isProfile = (0,vue__WEBPACK_IMPORTED_MODULE_5__.ref)(false);
     var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_4__.useForm)({
       image: null
     });
@@ -23291,6 +23292,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       props: props,
       profile: profile,
       cards: cards,
+      isProfile: isProfile,
       form: form,
       imageSelector: imageSelector,
       previewImage: previewImage,
@@ -26456,22 +26458,14 @@ var _hoisted_35 = {
 var _hoisted_36 = {
   key: 0
 };
-
-var _hoisted_37 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Here comes the tab system", -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_38 = [_hoisted_37];
-var _hoisted_39 = {
-  key: 1
+var _hoisted_37 = {
+  "class": "flex items-center justify-center gap-20 sm:gap-48 mb-5"
 };
-var _hoisted_40 = {
+var _hoisted_38 = {
   "class": "flex items-center justify-center gap-3 mb-5"
 };
 
-var _hoisted_41 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_39 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
     width: "36",
     height: "36",
@@ -26494,11 +26488,11 @@ var _hoisted_41 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_42 = {
+var _hoisted_40 = {
   "class": "font-normal text-black text-center text-2xl"
 };
 
-var _hoisted_43 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_41 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "text-yellow-500 font-bold"
   }, "webstormings", -1
@@ -26506,18 +26500,18 @@ var _hoisted_43 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_44 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_42 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
   /* HOISTED */
   );
 });
 
-var _hoisted_45 = {
+var _hoisted_43 = {
   key: 0,
   "class": "flex justify-center mx-auto mt-5"
 };
 
-var _hoisted_46 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_44 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
     "class": "text-3xl font-normal"
   }, " No contributions yet... 🙁 ", -1
@@ -26525,8 +26519,8 @@ var _hoisted_46 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_47 = [_hoisted_46];
-var _hoisted_48 = {
+var _hoisted_45 = [_hoisted_44];
+var _hoisted_46 = {
   key: 1,
   "class": "flex flex-wrap w-3/4 justify-center mx-auto mt-5 gap-10"
 };
@@ -26604,9 +26598,39 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return $setup.profile = !$setup.profile;
     })
-  }, [$setup.profile ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_32, "+")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_33, "<"))]), $setup.profile ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h3", _hoisted_34, " CREATE A NEW WEB IDEA ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h3", _hoisted_35, "DISPLAY PROFILE"))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("HERE COMES TAB SYSTEM COMPONENT WITH USERS POSTS, BROWSE POSTS AND BROWSE USERS"), ((_ctx$$page$props$auth5 = _ctx.$page.props.auth) === null || _ctx$$page$props$auth5 === void 0 ? void 0 : (_ctx$$page$props$auth6 = _ctx$$page$props$auth5.user) === null || _ctx$$page$props$auth6 === void 0 ? void 0 : _ctx$$page$props$auth6.id) === $props.user.id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_36, _hoisted_38)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [_hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.user.name) + "´s ", 1
+  }, [$setup.profile ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_32, "+")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_33, "<"))]), $setup.profile ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h3", _hoisted_34, " CREATE A NEW WEB IDEA ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h3", _hoisted_35, "DISPLAY PROFILE"))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("HERE COMES TAB SYSTEM COMPONENT WITH USERS POSTS, BROWSE POSTS AND BROWSE USERS"), ((_ctx$$page$props$auth5 = _ctx.$page.props.auth) === null || _ctx$$page$props$auth5 === void 0 ? void 0 : (_ctx$$page$props$auth6 = _ctx$$page$props$auth5.user) === null || _ctx$$page$props$auth6 === void 0 ? void 0 : _ctx$$page$props$auth6.id) === $props.user.id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    onClick: _cache[3] || (_cache[3] = function ($event) {
+      return $setup.isProfile = false;
+    }),
+    "class": "cursor-pointer"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-gray-600 text-2xl", {
+      underline: !$setup.isProfile,
+      'decoration-gray-900': !$setup.isProfile,
+      'decoration-4': !$setup.isProfile,
+      'underline-offset-8': !$setup.isProfile
+    }])
+  }, " YOUR WEBSTORMS ", 2
+  /* CLASS */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    onClick: _cache[4] || (_cache[4] = function ($event) {
+      return $setup.isProfile = true;
+    }),
+    "class": "cursor-pointer"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-gray-600 text-2xl", {
+      underline: $setup.isProfile,
+      'decoration-gray-900': $setup.isProfile,
+      'decoration-4': $setup.isProfile,
+      'underline-offset-8': $setup.isProfile
+    }])
+  }, " EDIT PROFILE ", 2
+  /* CLASS */
+  )])])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    key: 1
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("THE USER IS NOT THE AUTH USER"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [_hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.user.name) + "´s ", 1
   /* TEXT */
-  ), _hoisted_43])]), _hoisted_44, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", null, [!$setup.cards.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_45, _hoisted_47)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_48, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.cards, function (card) {
+  ), _hoisted_41])]), _hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", null, [!$setup.cards.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_43, _hoisted_45)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_46, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.cards, function (card) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: card.id,
       "class": "w-100 sm:w-[28%]"
@@ -26618,7 +26642,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["href", "card"])]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))]))])]))])]);
+  ))]))])])], 2112
+  /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+  ))])]);
 }
 
 /***/ }),

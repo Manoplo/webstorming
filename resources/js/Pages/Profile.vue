@@ -288,8 +288,38 @@
         <section>
             <!--HERE COMES TAB SYSTEM COMPONENT WITH USERS POSTS, BROWSE POSTS AND BROWSE USERS-->
             <div v-if="$page.props.auth?.user?.id === user.id">
-                <h1>Here comes the tab system</h1>
+                <div
+                    class="flex items-center justify-center gap-20 sm:gap-48 mb-5"
+                >
+                    <div @click="isProfile = false" class="cursor-pointer">
+                        <h2
+                            class="text-gray-600 text-2xl"
+                            :class="{
+                                underline: !isProfile,
+                                'decoration-gray-900': !isProfile,
+                                'decoration-4': !isProfile,
+                                'underline-offset-8': !isProfile,
+                            }"
+                        >
+                            YOUR WEBSTORMS
+                        </h2>
+                    </div>
+                    <div @click="isProfile = true" class="cursor-pointer">
+                        <h2
+                            class="text-gray-600 text-2xl"
+                            :class="{
+                                underline: isProfile,
+                                'decoration-gray-900': isProfile,
+                                'decoration-4': isProfile,
+                                'underline-offset-8': isProfile,
+                            }"
+                        >
+                            EDIT PROFILE
+                        </h2>
+                    </div>
+                </div>
             </div>
+            <!--THE USER IS NOT THE AUTH USER-->
             <div v-else>
                 <div class="flex items-center justify-center gap-3 mb-5">
                     <svg
@@ -371,6 +401,7 @@ const props = defineProps({
 
 const profile = ref(true);
 const cards = ref([]);
+const isProfile = ref(false);
 
 const form = useForm({
     image: null,
