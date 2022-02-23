@@ -9,7 +9,7 @@
             {{ $page.props.flash.message }}
         </div>
         <main class="w-3/4 mx-auto pt-32 flex flex-wrap">
-            <section class="sm:w-1/2 w-100 flex">
+            <section class="sm:w-1/2 w-100 flex mb-5">
                 <div
                     class="sm:w-4/5 w-100 rounded-lg border border-gray-200 shadow-xl overflow-hidden"
                 >
@@ -146,7 +146,9 @@
                             <!--Si el id del creador del post es el mismo que el id del usuario autenticado, mostramos el botón de editar-->
                             <div
                                 v-if="
-                                    $page.props.auth?.user?.id == data.user.id
+                                    $page.props.auth?.user?.id ==
+                                        data.user.id ||
+                                    $page.props.auth?.user?.is_admin
                                 "
                             >
                                 <div class="flex flex-row items-center">
@@ -254,7 +256,8 @@
                                     <div
                                         v-if="
                                             comment.author.id ===
-                                            $page.props.auth?.user?.id
+                                                $page.props.auth?.user?.id ||
+                                            $page.props.auth?.user?.is_admin
                                         "
                                     >
                                         <svg
@@ -417,9 +420,35 @@ const sendReport = () => {
         });
 
         return;
-    }
+    } else {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "This report will be send to the site admins.",
+            icon: "warning",
+            showDenyButton: true,
+            confirmButtonText: "Yes, delete it!",
+            confirmButtonColor: "#F0C400",
 
-    // TODO, SEND EMAIL NOTIFICACTION TO ADMIN
+            toast: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const reportBody = {
+                    post_id: props.data.post.id,
+                    user_id: usePage().props.value.auth.user.id,
+                };
+
+                Inertia.post("/reports", reportBody);
+                Swal.fire({
+                    title: "Thanks!",
+                    text: "We will review your report and take action if necessary.",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true,
+                });
+            }
+        });
+    }
 };
 
 const sendComment = () => {

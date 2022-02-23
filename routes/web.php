@@ -4,6 +4,7 @@ use App\Http\Controllers\CardController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DisplayController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\PostUserController;
 use App\Http\Controllers\ProfileController;
@@ -52,6 +53,8 @@ Route::get('posts/{post}', [PostController::class, 'show']);
 Route::post('posts/like', [PostController::class, 'like']);
 Route::post('posts/store', [PostController::class, 'store']);
 Route::delete('posts/{post}', [PostController::class, 'destroy']);
+Route::get('posts/edit/{post}', [PostController::class, 'edit']);
+Route::post('posts/update/{post}', [PostController::class, 'update']);
 
 
 /**
@@ -87,7 +90,7 @@ Route::post('/profiles/save-image', [FileController::class, 'store']);
  * SHOW ALL CARDS/STORMS ROUTES
  */
 
-Route::get('newest', [DisplayController::class, 'newest'])->name('newest');
+Route::get('newest', [DisplayController::class, 'newest'])->name('newest')  ;
 Route::get('voted', [DisplayController::class, 'popular'])->name('voted');
 
 /**
@@ -95,5 +98,11 @@ Route::get('voted', [DisplayController::class, 'popular'])->name('voted');
  */
 
 Route::get('/livesearch', [SearchController::class, 'liveSearch']);
+
+/**
+ * MAIL ROUTES
+ */
+
+ Route::post('/reports', [EmailController::class, 'sendReport']);
 
 require __DIR__ . '/auth.php';

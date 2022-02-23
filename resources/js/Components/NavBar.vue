@@ -29,12 +29,29 @@
                     v-if="search.length"
                     class="absolute top-14 left-0 bg-white shadow-lg rounded p-5 max-h-96 w-full overflow-y-auto"
                 >
-                    <li v-for="result in data" :key="result.id">
+                    <li
+                        v-for="result in data"
+                        :key="result.id"
+                        class="hover:bg-gray-200 w-100 rounded p-2 mb-2"
+                    >
                         <Link :href="`/posts/${result.id}`">
-                            <h2>{{ result.user_name }}</h2>
-                            <p>{{ result.stack_name }}</p>
-                            <p>{{ result.title }}</p>
+                            <div class="flex items-center gap-1">
+                                <h3>{{ result.title }}</h3>
+                                <small
+                                    >{{ result.stack_name }} -
+                                    {{ result.type }}</small
+                                >
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <img
+                                    :src="result.user_image"
+                                    class="w-5 h-5 rounded-full"
+                                    alt="user picture"
+                                />
+                                <small>{{ result.user_name }}</small>
+                            </div>
                         </Link>
+                        <hr class="mt-1" />
                     </li>
                 </ul>
             </div>
