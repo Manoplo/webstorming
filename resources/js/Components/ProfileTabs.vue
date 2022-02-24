@@ -144,9 +144,10 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import Card from "../Components/PostCard.vue";
 import { useForm, usePage } from "@inertiajs/inertia-vue3";
+import Swal from "sweetalert2";
 
 // PROPS
 const props = defineProps({
@@ -155,6 +156,7 @@ const props = defineProps({
 });
 
 // VARS
+
 const isProfile = ref(false);
 
 // FORM
@@ -173,6 +175,13 @@ const form = useForm({
 
 const updateProfile = () => {
     form.post(`/profiles/update/${usePage().props.value.auth.user.id}`, form);
+    Swal.fire({
+        title: "Profile Updated",
+        text: "Your profile has been updated",
+        icon: "success",
+        confirmButtonText: "OK",
+        toast: true,
+    });
 };
 </script>
 

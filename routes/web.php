@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
@@ -105,5 +106,26 @@ Route::get('/livesearch', [SearchController::class, 'liveSearch']);
  */
 
 Route::post('/reports', [EmailController::class, 'sendReport']);
+
+/**
+ * ADMIN PANEL ROUTES // TODO : CREATE ADMIN MIDDLWARE
+ *
+ */
+
+Route::group(['middleware' => 'admin'], function () {
+
+    Route::get('/admin', function () {
+        return Inertia::render('Admin');
+    });
+
+    Route::get('/admin/users', [AdminController::class, 'listUsers'])->name('users');
+    Route::get('/admin/stacks', [AdminController::class, 'listStacks'])->name('stacks');
+    Route::post('/admin/users', [AdminController::class, 'createUser']);
+    Route::post('/admin/stacks', [AdminController::class, 'createStack']);
+    Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser']);
+    Route::delete('/admin/stacks/{stack}', [AdminController::class, 'deleteStack']);
+});
+
+
 
 require __DIR__ . '/auth.php';

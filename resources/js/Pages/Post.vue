@@ -534,10 +534,6 @@ const deletePost = (id) => {
             });
         });
 };
-
-const checkBodyLength = () => {
-    return commentForm.body !== "";
-};
 </script>
 
 <style></style>
