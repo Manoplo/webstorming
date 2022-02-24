@@ -3,7 +3,7 @@
 
 namespace App\Http\Queries;
 
-use App\Helpers\DateFormater;
+use App\Services\Facades\DateFormater;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 

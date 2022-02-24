@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Services;
 
 use Carbon\Carbon;
 
 /**
- * DateFormater class has methods to format different dates and times using Carbon to serve formatted dates to JS front-end
+ * DateFormater Service has methods to format different dates and times using Carbon to serve formatted dates to JS front-end
  */
 class DateFormater
 {
@@ -17,7 +17,7 @@ class DateFormater
      * @return Array
      */
 
-    public static function dateDiff($arr)
+    public function dateDiff($arr)
     {
 
         foreach ($arr as $item) {
@@ -30,7 +30,7 @@ class DateFormater
         return $arr;
     }
 
-    public static function singleDateDiff($item)
+    public function singleDateDiff($item)
     {
         $carbon = new Carbon();
         $item->created_at = $carbon->diffForHumans($item->created_at);

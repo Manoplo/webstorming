@@ -1,6 +1,6 @@
 <template>
     <NavBar />
-    <section class="flex w-3/4 justify-around mx-auto mt-32">
+    <section class="flex w-3/4 justify-start mx-auto mt-32">
         <div class="flex w-full items-center sm:w-1/2">
             <div class="w-16">
                 <Vue3Lottie :animationData="Newest" />
@@ -12,22 +12,6 @@
                     >webstormings</span
                 >
             </h1>
-        </div>
-        <div class="flex w-full sm:w-1/2">
-            <form class="flex items-center ml-auto">
-                <button class="bg-transparent outline-none border-none mr-3">
-                    <img
-                        src="../../images/search.png"
-                        alt="search icon"
-                        class="w-5 h-5 object-cover"
-                    />
-                </button>
-                <input
-                    type="search"
-                    placeholder="Search for webstorm ideas..."
-                    class="w-96 p-2 border-gray-200 focus:outline-yellow-500 focus:shadow-lg rounded-md search-bar focus:ring-yellow-500 focus:ring-inset-0"
-                />
-            </form>
         </div>
     </section>
     <section>

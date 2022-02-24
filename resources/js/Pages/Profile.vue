@@ -208,9 +208,7 @@
                                         {{ info.numLikes }}
                                     </h3>
                                 </div>
-                                <p class="text-gray-500 text-sm">
-                                    likes collected
-                                </p>
+                                <p class="text-gray-500 text-sm">likes</p>
                             </div>
                             <div
                                 class="w-1/3 border px-4 py-2 border-gray-300 rounded-tr-lg rounded-br-lg text-center"
