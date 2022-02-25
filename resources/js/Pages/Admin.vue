@@ -16,6 +16,12 @@
                 >
                     <h2 class="text-2xl">Stacks</h2>
                 </Link>
+                <Link
+                    class="transition-all ease-in-out p-5 border rounded-xl hover:shadow-lg"
+                    href="/"
+                >
+                    <h2 class="text-2xl">Back to App</h2>
+                </Link>
             </div>
         </nav>
     </main>

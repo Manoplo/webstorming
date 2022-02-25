@@ -62,6 +62,7 @@
                         {{ $page.props.auth.user.name }}
                     </p>
                 </span>
+
                 <Link :href="`/profiles/${$page.props.auth.user.id}`">
                     <img
                         :src="$page.props.auth.user.image"
@@ -69,6 +70,14 @@
                         alt="Profile Image"
                     />
                 </Link>
+                <div v-if="$page.props.auth.user.is_admin">
+                    <Link
+                        class="rounded p-2 text-white bg-gray-800 hover:bg-black hover:shadow-xl"
+                        href="/admin/"
+                    >
+                        <small>Admin Panel</small>
+                    </Link>
+                </div>
                 <Link
                     class="transition ease-in-out text-sm text-black p-2 bg-yellow-400 rounded shadow-sm hover:shadow-lg hover:bg-yellow-500 hover:text-white"
                     :href="route('logout')"

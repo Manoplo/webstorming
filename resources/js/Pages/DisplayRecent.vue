@@ -25,7 +25,9 @@
             </div>
         </div>
         <!--Paginator-->
-        <div class="mt-6 flex w-100 sm:w-3/4 mx-auto justify-center mb-10">
+        <div
+            class="mt-6 flex flex-wrap w-100 sm:w-3/4 mx-auto justify-center mb-10"
+        >
             <Link
                 v-for="link in cards.links"
                 :href="link.url"
