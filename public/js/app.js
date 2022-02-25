@@ -27712,7 +27712,7 @@ var _hoisted_2 = {
 
 var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-    "class": "sm:text-9xl text-5xl lighter-h1 text-gray-800"
+    "class": "sm:text-9xl text-7xl lighter-h1 text-gray-800"
   }, "Web", -1
   /* HOISTED */
   );
@@ -27720,7 +27720,7 @@ var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
 
 var _hoisted_4 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-    "class": "sm:text-9xl text-5xl text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-yellow-600 pb-4"
+    "class": "sm:text-9xl text-7xl text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-yellow-600 pb-4"
   }, " Storming ", -1
   /* HOISTED */
   );
@@ -27754,7 +27754,7 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Register ");
 
 var _hoisted_12 = {
-  "class": "sm:w-1/2 w-full -mt-56"
+  "class": "sm:flex sm:w-1/2 hidden -mt-56"
 };
 
 var _hoisted_13 = /*#__PURE__*/_withScopeId(function () {
