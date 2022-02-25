@@ -807,6 +807,12 @@ select {
 .mb-4 {
   margin-bottom: 1rem;
 }
+.-mt-28 {
+  margin-top: -7rem;
+}
+.-mt-52 {
+  margin-top: -13rem;
+}
 .block {
   display: block;
 }
@@ -860,6 +866,17 @@ select {
 }
 .h-36 {
   height: 9rem;
+}
+.h-72 {
+  height: 18rem;
+}
+.h-fit {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.h-96 {
+  height: 24rem;
 }
 .max-h-96 {
   max-height: 24rem;
@@ -935,6 +952,9 @@ select {
 }
 .w-1\/4 {
   width: 25%;
+}
+.w-2\/4 {
+  width: 50%;
 }
 .min-w-0 {
   min-width: 0px;
@@ -1226,6 +1246,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
 .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
@@ -1263,6 +1287,18 @@ select {
 }
 .p-7 {
   padding: 1.75rem;
+}
+.p-20 {
+  padding: 5rem;
+}
+.p-52 {
+  padding: 13rem;
+}
+.p-32 {
+  padding: 8rem;
+}
+.p-14 {
+  padding: 3.5rem;
 }
 .px-4 {
   padding-left: 1rem;
@@ -1353,11 +1389,20 @@ select {
 .pt-28 {
   padding-top: 7rem;
 }
+.pt-10 {
+  padding-top: 2.5rem;
+}
 .text-left {
   text-align: left;
 }
 .text-center {
   text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.align-middle {
+  vertical-align: middle;
 }
 .font-sans {
   font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -1398,6 +1443,10 @@ select {
   font-size: 4.5rem;
   line-height: 1;
 }
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
 .font-medium {
   font-weight: 500;
 }
@@ -1412,6 +1461,9 @@ select {
 }
 .font-normal {
   font-weight: 400;
+}
+.font-extrabold {
+  font-weight: 800;
 }
 .uppercase {
   text-transform: uppercase;
@@ -1520,6 +1572,10 @@ select {
 .text-green-600 {
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity));
+}
+.text-yellow-200 {
+  --tw-text-opacity: 1;
+  color: rgb(254 240 138 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;
@@ -1927,6 +1983,10 @@ options[selected] {
     margin-left: 1.5rem;
   }
 
+  .sm\:block {
+    display: block;
+  }
+
   .sm\:flex {
     display: flex;
   }
@@ -1969,6 +2029,18 @@ options[selected] {
 
   .sm\:flex-1 {
     flex: 1 1 0%;
+  }
+
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
+  .sm\:flex-col {
+    flex-direction: column;
+  }
+
+  .sm\:flex-nowrap {
+    flex-wrap: nowrap;
   }
 
   .sm\:items-center {

@@ -3,6 +3,7 @@ import NavBar from "../Components/NavBar";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import Vue3Lottie from "vue3-lottie";
 import MainAnimation from "../lotties/mainAnim.json";
+import Bulb from "../lotties/bussiness.json";
 import MostRecent from "../Components/containers/MostRecent";
 import MostPopular from "../Components/containers/MostPopular";
 
@@ -60,6 +61,86 @@ defineProps({
         </div>
     </header>
     <main>
+        <!--WHAT´S WEBSTORMING-->
+
+        <!--ICONS SECTION-->
+        <section class="bg-gray-100 w-full">
+            <h1 class="text-2xl text-gray-800 text-center pt-10">
+                Bring your ideas to the web
+            </h1>
+            <div
+                class="w-3/4 p-20 mx-auto sm:flex-row sm:flex flex flex-col items-center justify-center gap-5"
+            >
+                <div
+                    class="sm:w-1/4 w-full flex-col justify-center text-center gap-3"
+                >
+                    <div class="flex justify-center mb-3">
+                        <img
+                            src="../../images/icons/artificial-intelligence.png"
+                            width="64px"
+                            height="64px"
+                            alt="idea icon"
+                        />
+                    </div>
+                    <h2 class="mb-3 text-bold font-bold">Enlight yourself</h2>
+                    <p class="font-normal text-gray-600">
+                        You just had an idea you need to share with others, but
+                        you don´t know here
+                    </p>
+                </div>
+                <div
+                    class="sm:w-1/4 w-full flex-col justify-center text-center gap-3"
+                >
+                    <div class="flex justify-center mb-3">
+                        <img
+                            src="../../images/icons/social-marketing.png"
+                            width="64px"
+                            height="64px"
+                            alt="idea icon"
+                        />
+                    </div>
+                    <h2 class="mb-3 text-bold font-bold">Spread the word</h2>
+                    <p class="font-normal text-gray-600">
+                        By signing in Web Storming, you can share your ideas
+                        easily by just creating a profile!
+                    </p>
+                </div>
+                <div
+                    class="sm:w-1/4 w-full flex-col justify-center text-center gap-3"
+                >
+                    <div class="flex justify-center mb-3">
+                        <img
+                            src="../../images/icons/share.png"
+                            width="64px"
+                            height="64px"
+                            alt="share icon"
+                        />
+                    </div>
+                    <h2 class="mb-3 text-bold font-bold">Share with us</h2>
+                    <p class="font-normal text-gray-600">
+                        It doesn´t matter whether you are a dev or not, you can
+                        just tell us what wonderfull idea you came up with!
+                    </p>
+                </div>
+                <div
+                    class="sm:w-1/4 w-full flex-col justify-center text-center gap-3"
+                >
+                    <div class="flex justify-center mb-3">
+                        <img
+                            src="../../images/icons/feedback.png"
+                            width="64px"
+                            height="64px"
+                            alt="feedback icon"
+                        />
+                    </div>
+                    <h2 class="mb-3 text-bold font-bold">Get feedback</h2>
+                    <p class="font-normal text-gray-600">
+                        And finally, if your idea is good, you will be bumped up
+                        and get some feedback from others!
+                    </p>
+                </div>
+            </div>
+        </section>
         <section>
             <div class="block w-3/4 mx-auto mb-14 mt-14">
                 <h1 class="font-light text-gray-700 text-3xl text-center">
@@ -78,6 +159,30 @@ defineProps({
                     See more
                 </Link>
             </div>
+        </section>
+        <section class="mt-20 mb-20">
+            <article class="w-100 sm:w-3/4 flex gap-5 items-center mx-auto">
+                <div class="sm:w-1/2 mx-auto sm:block hidden">
+                    <Vue3Lottie :animationData="Bulb" />
+                </div>
+                <div
+                    class="sm:w-1/2 w-full p-20 flex flex-col h-fit items-center justify-end rounded-xl first-section"
+                >
+                    <h2
+                        class="text-5xl font-extrabold text-white text-right mb-4"
+                    >
+                        <span class="text-yellow-400">What</span>
+                        <span class="text-yellow-200"> is</span> Web Storming?
+                    </h2>
+                    <p class="text-gray-700 text-2xl text-right">
+                        Web Storming is a minimal social network where users
+                        might share their ideas and collect some feedback from
+                        others. Choose your tech stack (don´t worry if you are
+                        not a dev, just pick one), your app name and type and
+                        get some opinions!.
+                    </p>
+                </div>
+            </article>
         </section>
         <section>
             <div class="block w-3/4 mx-auto mb-14 mt-14">
@@ -102,6 +207,21 @@ defineProps({
 </template>
 
 <style scoped>
+.first-section {
+    background-image: #ffdd00;
+    background-image: radial-gradient(
+            at 7% 11%,
+            hsla(0, 0%, 100%, 1) 0,
+            transparent 50%
+        ),
+        radial-gradient(at 80% 0%, hsla(52, 84%, 50%, 1) 0, transparent 50%),
+        radial-gradient(at 5% 96%, hsla(0, 41%, 95%, 1) 0, transparent 50%),
+        radial-gradient(at 80% 50%, hsla(56, 83%, 55%, 1) 0, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(53, 100%, 50%, 1) 0, transparent 50%),
+        radial-gradient(at 80% 100%, hsla(48, 92%, 44%, 1) 0, transparent 50%),
+        radial-gradient(at 6% 47%, hsla(0, 0%, 100%, 1) 0, transparent 50%);
+}
+
 .lighter-h1 {
     font-weight: 700;
 }
