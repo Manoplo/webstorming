@@ -32,8 +32,8 @@ class DateFormater
     /**
      * Applies carbon dateDiff to a given created_at field in an array
      *
-     * @param array $arr
-     * @return array
+     * @param Array $arr
+     * @return Array
      */
     public function formatArrayOfDates($arr)
     {
@@ -50,7 +50,12 @@ class DateFormater
         return $arr;
     }
         
-
+    /**
+     * Takes an object with timestamp and returns a string with the difference between the current time and the timestamp
+     *
+     * @param Object $item
+     * @return String
+     */
     public function singleDateDiff($item)
     {
         $now = Carbon::now();
