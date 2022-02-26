@@ -7,8 +7,8 @@ use App\Http\Requests\PostRequest;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Stack;
-
-
+use App\Services\Facades\DateFormater;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -38,10 +38,19 @@ class PostController extends Controller
         // darle un estilo a los botones de votar.
         $votedFor = $post->likes->contains(Auth::id());
 
-        /* 
-        $comments = DateFormater::dateDiff($comments);
+        
+        
+        // Formateo la fecha de creación de cada uno de los comentarios
+        $comments =  DateFormater::formatArrayOfDates($comments);
+        
+        // Formatear la fecha de publicación del post. 
+        $postDiff = DateFormater::singleDateDiff($post);
+        
 
-        dd($comments); */
+        
+
+        /* $post = DateFormater::singleDateDiff($post); */
+        
 
         $data = [
             'user' => $user,
@@ -49,7 +58,8 @@ class PostController extends Controller
             'post' => $post,
             'comments' => $comments,
             'likes' => $likes,
-            'votedFor' => $votedFor
+            'votedFor' => $votedFor,
+            'postDiff' => $postDiff,
 
         ];
 

@@ -807,12 +807,6 @@ select {
 .mb-4 {
   margin-bottom: 1rem;
 }
-.-mt-28 {
-  margin-top: -7rem;
-}
-.-mt-52 {
-  margin-top: -13rem;
-}
 .block {
   display: block;
 }
@@ -821,6 +815,9 @@ select {
 }
 .inline-flex {
   display: inline-flex;
+}
+.table {
+  display: table;
 }
 .grid {
   display: grid;
@@ -867,16 +864,10 @@ select {
 .h-36 {
   height: 9rem;
 }
-.h-72 {
-  height: 18rem;
-}
 .h-fit {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-}
-.h-96 {
-  height: 24rem;
 }
 .max-h-96 {
   max-height: 24rem;
@@ -952,9 +943,6 @@ select {
 }
 .w-1\/4 {
   width: 25%;
-}
-.w-2\/4 {
-  width: 50%;
 }
 .min-w-0 {
   min-width: 0px;
@@ -1106,6 +1094,9 @@ select {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.break-all {
+  word-break: break-all;
+}
 .rounded-md {
   border-radius: 0.375rem;
 }
@@ -1246,10 +1237,6 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
-.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-}
 .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
@@ -1290,15 +1277,6 @@ select {
 }
 .p-20 {
   padding: 5rem;
-}
-.p-52 {
-  padding: 13rem;
-}
-.p-32 {
-  padding: 8rem;
-}
-.p-14 {
-  padding: 3.5rem;
 }
 .px-4 {
   padding-left: 1rem;
@@ -1400,9 +1378,6 @@ select {
 }
 .text-right {
   text-align: right;
-}
-.align-middle {
-  vertical-align: middle;
 }
 .font-sans {
   font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -1565,6 +1540,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(250 204 21 / var(--tw-text-opacity));
 }
+.text-yellow-200 {
+  --tw-text-opacity: 1;
+  color: rgb(254 240 138 / var(--tw-text-opacity));
+}
 .text-red-400 {
   --tw-text-opacity: 1;
   color: rgb(248 113 113 / var(--tw-text-opacity));
@@ -1572,10 +1551,6 @@ select {
 .text-green-600 {
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity));
-}
-.text-yellow-200 {
-  --tw-text-opacity: 1;
-  color: rgb(254 240 138 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;
@@ -2033,14 +2008,6 @@ options[selected] {
 
   .sm\:flex-row {
     flex-direction: row;
-  }
-
-  .sm\:flex-col {
-    flex-direction: column;
-  }
-
-  .sm\:flex-nowrap {
-    flex-wrap: nowrap;
   }
 
   .sm\:items-center {

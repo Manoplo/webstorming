@@ -66,7 +66,7 @@ defineProps({
         <!--ICONS SECTION-->
         <section class="bg-gray-100 w-full">
             <h1 class="text-2xl text-gray-800 text-center pt-10">
-                Bring your ideas to the web
+                Bring your web app ideas to the web
             </h1>
             <div
                 class="w-3/4 p-20 mx-auto sm:flex-row sm:flex flex flex-col items-center justify-center gap-5"
@@ -84,8 +84,8 @@ defineProps({
                     </div>
                     <h2 class="mb-3 text-bold font-bold">Enlight yourself</h2>
                     <p class="font-normal text-gray-600">
-                        You just had an idea you need to share with others, but
-                        you don´t know here
+                        You just had an idea for an application you need to
+                        share with others, but you don´t know here
                     </p>
                 </div>
                 <div
@@ -166,7 +166,7 @@ defineProps({
                     <Vue3Lottie :animationData="Bulb" />
                 </div>
                 <div
-                    class="sm:w-1/2 w-full p-20 flex flex-col h-fit items-center justify-end rounded-xl first-section"
+                    class="sm:w-1/2 w-full p-20 flex flex-col h-fit items-center justify-end rounded-3xl first-section"
                 >
                     <h2
                         class="text-5xl font-extrabold text-white text-right mb-4"
@@ -176,10 +176,10 @@ defineProps({
                     </h2>
                     <p class="text-gray-700 text-2xl text-right">
                         Web Storming is a minimal social network where users
-                        might share their ideas and collect some feedback from
-                        others. Choose your tech stack (don´t worry if you are
-                        not a dev, just pick one), your app name and type and
-                        get some opinions!.
+                        might share their ideas for web applications and collect
+                        some feedback from others. Choose your tech stack (don´t
+                        worry if you are not a dev, just pick one), your app
+                        name and type and get some opinions!.
                     </p>
                 </div>
             </article>

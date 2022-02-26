@@ -35,7 +35,7 @@
                                 </Link>
                             </h3>
                             <small class="text-gray-400 mb-2">
-                                published {{ data.post.created_at }}</small
+                                published {{ data.postDiff }}</small
                             >
                             <div class="flex justify-center mb-3">
                                 <img
@@ -251,7 +251,7 @@
                                     </Link>
 
                                     <small class="text-gray-500 ml-2">
-                                        {{ comment.created_at }}
+                                        {{ comment.formatedDate }}
                                     </small>
                                     <div
                                         v-if="

@@ -23,18 +23,38 @@ class DateFormater
         foreach ($arr as $item) {
 
             $carbon = new Carbon();
-            $carbon->setTimezone('Europe/London');
+           
             $item->created_at = $carbon->diffForHumans($item->created_at);
         }
 
         return $arr;
     }
+    /**
+     * Applies carbon dateDiff to a given created_at field in an array
+     *
+     * @param array $arr
+     * @return array
+     */
+    public function formatArrayOfDates($arr)
+    {
+        $arrOfDates = [];
+        foreach ($arr as $item) {
+            array_push($arrOfDates, $this->singleDateDiff($item));
+            
+        }
+
+        for ($i=0; $i < count($arr) ; $i++) { 
+            $arr[$i]->formatedDate = $arrOfDates[$i];
+        }
+
+        return $arr;
+    }
+        
 
     public function singleDateDiff($item)
     {
-        $carbon = new Carbon();
-        $item->created_at = $carbon->diffForHumans($item->created_at);
-
-        return $item;
+        $now = Carbon::now();
+        $postDiff = $now->diffForHumans($item->created_at); 
+        return $postDiff;
     }
 }

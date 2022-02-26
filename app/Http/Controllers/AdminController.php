@@ -68,4 +68,9 @@ class AdminController extends Controller
         $user->delete();
         return redirect()->route('users');
     }
+    public function deleteStack(Stack $stack)
+    {
+        $stack->delete();
+        return redirect()->route('stacks');
+    }
 }
