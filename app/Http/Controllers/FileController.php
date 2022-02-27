@@ -20,12 +20,11 @@ class FileController extends Controller
 
 
         /**
-         * Using spatie/image package to resize and save the image
+         * Using spatie/image package to focal-crop the image and save it. 
          */
         
         Image::load($request->file('image'))
-        ->width(200)
-        ->height(200)
+        ->focalCrop(200, 200, 300, 300)
         ->save();
         
         $path = $request->file('image')->store('public');
