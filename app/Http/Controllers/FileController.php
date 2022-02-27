@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FileRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Image\Image;
 
 class FileController extends Controller
 {   
@@ -17,7 +18,16 @@ class FileController extends Controller
      */
     public function store(FileRequest $request){
 
-       
+
+        /**
+         * Using spatie/image package to resize and save the image
+         */
+        
+        Image::load($request->file('image'))
+        ->width(200)
+        ->height(200)
+        ->save();
+        
         $path = $request->file('image')->store('public');
 
         $user = Auth::user();

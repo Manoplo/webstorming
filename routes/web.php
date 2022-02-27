@@ -49,7 +49,7 @@ Route::get('cards/{user}', [CardController::class, 'getByUser']);
 /**
  * POST CONTROLLER ROUTES
  */
-// TODO : CREATE CONTROLLER, OBJECT BINDING MODEL,  RETURN POST DATA WITH MESSAGES. 
+
 Route::get('posts/{post}', [PostController::class, 'show']);
 Route::post('posts/like', [PostController::class, 'like']);
 Route::post('posts/store', [PostController::class, 'store']);
@@ -125,7 +125,5 @@ Route::group(['middleware' => 'admin'], function () {
     Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser']);
     Route::delete('/admin/stacks/{stack}', [AdminController::class, 'deleteStack']);
 });
-
-
 
 require __DIR__ . '/auth.php';

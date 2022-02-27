@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\DateFormater;
+
 use App\Http\Queries\QueryConstructor;
-use App\Models\Post;
 use App\Models\User;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class CardController extends Controller
 {
@@ -26,13 +23,25 @@ class CardController extends Controller
         return response()->json($data, 200);
     }
 
+    
+    /**
+     * Get most popular posts with some user and stack info to fullfill the cards. Axios call.
+     *
+     * @return json
+     */
     public function getByPopular(){
         $query = new QueryConstructor();
         $data = $query->getCardsByMostPopular(6);
 
         return response()->json($data, 200);
     }
-
+    
+    /**
+     * Get all posts from a single user with some info to fullfill the cards. Axios call.
+     *
+     * @param User $user
+     * @return json
+     */
     public function getByUser(User $user)
     {
         $query = new QueryConstructor();

@@ -9,7 +9,13 @@ use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
 
 class AdminController extends Controller
-{
+{   
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Inertia view
+     */
     public function listUsers()
     {
 
@@ -19,12 +25,24 @@ class AdminController extends Controller
             'users' => User::query()->paginate(5),
         ]);
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Inertia view
+     */
     public function listStacks()
     {
         
         return Inertia::render('Admin/Stacks', ['stacks' => Stack::query()->paginate(5)]);
     }
 
+    /**
+     * Store a new user
+     *
+     * @param Request $request
+     * @return redirect
+     */
     public function createUser(Request $request)
     {   
         $request->validate([
@@ -46,6 +64,12 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'User created');
 
     }
+    /**
+     * Store a new stack
+     *
+     * @param Request $request
+     * @return redirect
+     */
     public function createStack(Request $request)
     {   
         $request->validate([
@@ -62,12 +86,24 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'Stack created');
 
     }
-
+    /**
+     * Destroy the specified resource.
+     *
+     * @param User $user
+     * @return redirect
+     */
     public function deleteUser(User $user)
     {
         $user->delete();
         return redirect()->route('users');
     }
+
+    /**
+     * Destroy the specified resource.
+     *
+     * @param Stack $stack
+     * @return redirect
+     */
     public function deleteStack(Stack $stack)
     {
         $stack->delete();
