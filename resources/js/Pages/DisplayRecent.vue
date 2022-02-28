@@ -42,10 +42,12 @@
             />
         </div>
     </section>
+    <Footer />
 </template>
 
 <script setup>
 import NavBar from "../Components/NavBar.vue";
+import Footer from "../Components/Footer.vue";
 import Vue3Lottie from "vue3-lottie";
 import Newest from "../lotties/newest.json";
 import Card from "../Components/PostCard.vue";

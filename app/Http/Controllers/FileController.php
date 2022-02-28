@@ -11,7 +11,7 @@ class FileController extends Controller
 {   
 
     /**
-     * Store a newly created profile avatar image resource in storage.
+     * Store a newly created profile avatar image resource in storage. Uses Spatie Image library to resize image.
      *
      * @param FileRequest $request
      * @return void

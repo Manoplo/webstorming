@@ -37,6 +37,7 @@ import Vue3Lottie from "vue3-lottie";
 import Like from "../lotties/like.json";
 import Loading from "../lotties/spinner.json";
 import Card from "../Components/PostCard.vue";
+
 import { Link } from "@inertiajs/inertia-vue3";
 import { ref, onBeforeMount } from "vue";
 

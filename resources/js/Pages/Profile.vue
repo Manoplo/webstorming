@@ -179,7 +179,7 @@
                                         {{ info.numPosts }}
                                     </h3>
                                 </div>
-                                <p class="text-gray-500 text-sm">
+                                <p class="text-gray-500 text-[10px] sm:text-sm">
                                     webstormings
                                 </p>
                             </div>

@@ -10,6 +10,7 @@
 
 <script setup>
 import PostCard from "../PostCard";
+
 import { ref, onBeforeMount, defineComponent } from "vue";
 import axios from "axios";
 

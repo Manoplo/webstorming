@@ -6,6 +6,7 @@ import MainAnimation from "../lotties/mainAnim.json";
 import Bulb from "../lotties/bussiness.json";
 import MostRecent from "../Components/containers/MostRecent";
 import MostPopular from "../Components/containers/MostPopular";
+import Footer from "../Components/Footer";
 
 defineProps({
     canLogin: Boolean,
@@ -85,7 +86,7 @@ defineProps({
                     <h2 class="mb-3 text-bold font-bold">Enlight yourself</h2>
                     <p class="font-normal text-gray-600">
                         You just had an idea for an application you need to
-                        share with others, but you don´t know here
+                        share with others, but you don´t know where
                     </p>
                 </div>
                 <div
@@ -204,6 +205,7 @@ defineProps({
             </div>
         </section>
     </main>
+    <Footer />
 </template>
 
 <style scoped>

@@ -42,20 +42,29 @@ Route::get('/dashboard', function () {
  * Cards fetching routes
  */
 
-Route::get('cards/recent', [CardController::class, 'getRecent']);
-Route::get('cards/popular', [CardController::class, 'getByPopular']);
-Route::get('cards/{user}', [CardController::class, 'getByUser']);
+Route::controller(CardController::class)->group(function(){
+
+    Route::get('cards/recent',  'getRecent');
+    Route::get('cards/popular', 'getByPopular');
+    Route::get('cards/{user}', 'getByUser');
+
+});
+
 
 /**
  * POST CONTROLLER ROUTES
  */
 
-Route::get('posts/{post}', [PostController::class, 'show']);
-Route::post('posts/like', [PostController::class, 'like']);
-Route::post('posts/store', [PostController::class, 'store']);
-Route::delete('posts/{post}', [PostController::class, 'destroy']);
-Route::get('posts/edit/{post}', [PostController::class, 'edit']);
-Route::post('posts/update/{post}', [PostController::class, 'update']);
+Route::controller(PostController::class)->group(function(){
+    
+    Route::get('posts/{post}', 'show');
+    Route::post('posts/like',  'like');
+    Route::post('posts/store', 'store');
+    Route::delete('posts/{post}', 'destroy');
+    Route::get('posts/edit/{post}',  'edit');
+    Route::post('posts/update/{post}',  'update');
+});
+
 
 
 /**

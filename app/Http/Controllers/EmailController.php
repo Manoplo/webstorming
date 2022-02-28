@@ -17,7 +17,7 @@ class EmailController extends Controller
      * Sends a report to site admin about a post with user who reported it and post id. 
      *
      * @param Request $request
-     * @return void
+     * @return redirect
      */
     public function sendReport(Request $request){
 

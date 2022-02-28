@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Request $request
+     * @return redirect
+     */
     public function store(Request $request)
     {
 
@@ -25,6 +32,12 @@ class CommentController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Comment $comment
+     * @return redirect
+     */
     public function destroy(Comment $comment)
     {
 

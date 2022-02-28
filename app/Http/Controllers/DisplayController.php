@@ -9,7 +9,11 @@ use Inertia\Inertia;
 class DisplayController extends Controller
 {
 
-
+    /**
+     * Display a listing of the resource order by latest. with pagination. Uses QueryConstructor.
+     *
+     * @return Inertia view
+     */
     public function newest()
     {
 
@@ -21,7 +25,11 @@ class DisplayController extends Controller
             'cards' => $cards,
         ]);
     }
-
+    /**
+     * Display a listing of the resource order by popular. with pagination. Uses axios call. 
+     *
+     * @return Inertia view
+     */
     public function popular()
     {
         return Inertia::render('DisplayPopular');

@@ -36,6 +36,7 @@
                 id="type"
                 v-model="form.type"
             >
+                <option selected disabled hidden>Choose a type</option>
                 <option value="E-commerce">E-commerce</option>
                 <option value="Blog">Blog</option>
                 <option value="Social Network">Social Network</option>
@@ -56,6 +57,7 @@
                 id="stacks"
                 v-model="form.stack_id"
             >
+                <option selected disabled hidden>Choose a stack</option>
                 <option
                     v-for="stack in stacks"
                     :key="stack.id"
@@ -88,11 +90,22 @@ const props = defineProps({
 const form = useForm({
     title: "",
     description: "",
-    stack_id: "",
-    type: "",
+    stack_id: "Choose a stack",
+    type: "Choose a type",
 });
 
 const sendPost = () => {
+    if (form.stack_id === "Choose a stack" || form.type === "Choose a type") {
+        Swal.fire({
+            title: "Oops...",
+            text: "You must choose a stack or a type",
+            icon: "error",
+            toast: true,
+            confirmButtonText: "Cool",
+        });
+        return;
+    }
+
     form.post("/posts/store");
     if (props.errors !== null) {
         props.errors = null;

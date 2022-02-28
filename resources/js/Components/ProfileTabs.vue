@@ -24,7 +24,7 @@
                     />
                 </svg>
                 <h2
-                    class="text-gray-600 text-2xl"
+                    class="text-gray-600 text-xl sm:text-2xl"
                     :class="{
                         underline: !isProfile,
                         'decoration-gray-900': !isProfile,
@@ -60,7 +60,7 @@
                     />
                 </svg>
                 <h2
-                    class="text-gray-600 text-2xl"
+                    class="text-gray-600 text-xl sm:text-2xl"
                     :class="{
                         underline: isProfile,
                         'decoration-gray-900': isProfile,
