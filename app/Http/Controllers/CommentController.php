@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -28,6 +31,21 @@ class CommentController extends Controller
         }
 
         Comment::create($request->all());
+
+        /**
+         * Send notification to the user who created the post
+         */
+        $post = Post::find($request->post_id);
+        $creator = $post->user;
+       
+        $commenter = Auth::user();
+        /**
+         * Dont send notification to the user himself
+         */
+        if ($creator->id !== $commenter->id) {
+            $creator->notify(new \App\Notifications\CommentsNotification($post->id, $commenter->name, $commenter->image));
+        }
+        
 
         return redirect()->back();
     }

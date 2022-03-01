@@ -14,7 +14,12 @@
                 </h1>
             </div>
         </Link>
-
+        <div v-if="$page.props.auth?.user?.is_admin" class="sm:ml-[700px]">
+            <Notifications />
+        </div>
+        <div v-else-if="$page.props.auth.user" class="sm:ml-[850px]">
+            <Notifications />
+        </div>
         <div class="hidden lg:flex items-center gap-3">
             <!--SEARCH BAR AND DISPLAY RESULTS-->
             <div class="relative" id="divsearch">
@@ -200,6 +205,7 @@
 <script setup>
 import { defineComponent, ref, watch } from "vue";
 import { Link } from "@inertiajs/inertia-vue3";
+import Notifications from "./Notifications";
 import throttle from "lodash/throttle";
 import debounce from "lodash/debounce";
 

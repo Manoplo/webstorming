@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DisplayController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PostUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
@@ -73,6 +74,13 @@ Route::controller(PostController::class)->group(function(){
 
 Route::post('comments/store', [CommentController::class, 'store']);
 Route::delete('comments/{comment}', [CommentController::class, 'destroy']);
+
+/**
+ * COMMENT NOTIFICATIONS ROUTE
+ */
+
+Route::get('notifications', [NotificationController::class, 'display']);
+Route::post('mark-as-read', [NotificationController::class, 'markAsRead']);
 
 /**
  * LIKES ROUTE

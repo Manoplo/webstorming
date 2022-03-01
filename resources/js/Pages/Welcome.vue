@@ -20,9 +20,9 @@ defineProps({
     <NavBar />
     <header class="flex w-3/4 justify-center mx-auto mt-48">
         <div class="sm:w-1/2 w-full">
-            <h1 class="sm:text-9xl text-7xl lighter-h1 text-gray-800">Web</h1>
+            <h1 class="sm:text-9xl text-6xl lighter-h1 text-gray-800">Web</h1>
             <h1
-                class="sm:text-9xl text-7xl text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-yellow-600 pb-4"
+                class="sm:text-9xl text-6xl text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-yellow-600 pb-4"
             >
                 Storming
             </h1>
